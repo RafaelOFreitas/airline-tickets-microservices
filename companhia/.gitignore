@@ -1,6 +1,6 @@
 HELP.md
-/companhia/target/
-/companhia/.mvn/wrapper/
+/companhia/target/**
+/companhia/.mvn/**
 !**/src/main/**/target/
 !**/src/test/**/target/
 
