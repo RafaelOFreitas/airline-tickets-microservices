@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/airline-tickets-microservices.iml" filepath="$PROJECT_DIR$/.idea/airline-tickets-microservices.iml" />
+      <module fileurl="file://$PROJECT_DIR$/companhia/companhia.iml" filepath="$PROJECT_DIR$/companhia/companhia.iml" />
+    </modules>
+  </component>
+</project>
