@@ -4,6 +4,7 @@ import br.com.airline.companhia.adapter.in.web.dto.input.CompanhiaInput;
 import br.com.airline.companhia.adapter.in.web.dto.output.CompanhiaOutput;
 import br.com.airline.companhia.adapter.in.web.mapper.CompanhiaMapper;
 import br.com.airline.companhia.core.application.port.in.CompanhiaServicePort;
+import java.util.UUID;
 import javax.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -29,8 +30,8 @@ public class CompanhiaController {
   private final CompanhiaMapper mapper;
 
   @GetMapping("/{id}")
-  public ResponseEntity<CompanhiaOutput> getCompanhiaById(@PathVariable Integer id) {
-    log.info(String.format("Recebendo requisição para buscar os dados da companhia:%d.", id));
+  public ResponseEntity<CompanhiaOutput> getCompanhiaById(@PathVariable UUID id) {
+    log.info(String.format("Recebendo requisição para buscar os dados da companhia: %s.", id));
 
     var companhia = this.companhiaService.buscar(id);
 
@@ -39,10 +40,10 @@ public class CompanhiaController {
 
   @PutMapping("/{id}")
   public ResponseEntity<CompanhiaOutput> updateCompanhia(
-      @PathVariable Integer id,
+      @PathVariable UUID id,
       @Valid @RequestBody CompanhiaInput input
   ) {
-    log.info(String.format("Recebendo requisição para atualizar uma companhia: %d", id));
+    log.info(String.format("Recebendo requisição para atualizar uma companhia: %s", id));
 
     var companhia = this.companhiaService.atualizar(id, this.mapper.toDomain(input));
 
@@ -61,16 +62,16 @@ public class CompanhiaController {
 
   @PutMapping("/{id}/ativas")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  public void activateCompanhia(@PathVariable Integer id) {
-    log.info(String.format("Recebendo requisição para reativar uma companhia: %d", id));
+  public void activateCompanhia(@PathVariable UUID id) {
+    log.info(String.format("Recebendo requisição para reativar uma companhia: %s", id));
 
     this.companhiaService.ativar(id);
   }
 
   @DeleteMapping("/{id}/ativas")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  public void inactivateCompanhia(@PathVariable Integer id) {
-    log.info(String.format("Recebendo requisição para inativar uma companhia: %d", id));
+  public void inactivateCompanhia(@PathVariable UUID id) {
+    log.info(String.format("Recebendo requisição para inativar uma companhia: %s", id));
 
     this.companhiaService.inativar(id);
   }

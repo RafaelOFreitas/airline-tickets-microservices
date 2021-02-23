@@ -3,11 +3,13 @@ package br.com.airline.companhia.core.application.service;
 import br.com.airline.companhia.core.application.port.in.CompanhiaServicePort;
 import br.com.airline.companhia.core.application.port.out.CompanhiaPersistencePort;
 import br.com.airline.companhia.core.domain.Companhia;
-import javax.transaction.Transactional;
+import java.util.UUID;
 import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 @AllArgsConstructor
+@Log4j2
 @Service
 public class CompanhiaService implements CompanhiaServicePort {
 
@@ -15,32 +17,36 @@ public class CompanhiaService implements CompanhiaServicePort {
 
   @Override
   public Companhia adicionar(Companhia companhia) {
+    companhia.ativarCompanhia();
+
     return this.companhiaPersistence.adicionar(companhia);
   }
 
   @Override
-  public Companhia buscar(Integer id) {
+  public Companhia buscar(UUID id) {
     return this.companhiaPersistence.buscar(id);
   }
 
   @Override
-  public Companhia atualizar(Integer id, Companhia companhia) {
+  public Companhia atualizar(UUID id, Companhia companhia) {
     return this.companhiaPersistence.atualizar(id, companhia);
   }
 
-  @Transactional
   @Override
-  public void ativar(Integer id) {
-    var companhia = this.buscar(id);
+  public void ativar(UUID id) {
+    var companhia = this.companhiaPersistence.buscar(id);
 
     companhia.ativarCompanhia();
+
+    this.companhiaPersistence.atualizar(companhia);
   }
 
-  @Transactional
   @Override
-  public void inativar(Integer id) {
-    var companhia = this.buscar(id);
+  public void inativar(UUID id) {
+    var companhia = this.companhiaPersistence.buscar(id);
 
     companhia.inativarCompanhia();
+
+    this.companhiaPersistence.atualizar(companhia);
   }
 }

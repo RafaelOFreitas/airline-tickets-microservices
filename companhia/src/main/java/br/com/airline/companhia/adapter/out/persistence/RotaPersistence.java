@@ -2,6 +2,7 @@ package br.com.airline.companhia.adapter.out.persistence;
 
 import br.com.airline.companhia.core.application.port.out.RotaPersistencePort;
 import br.com.airline.companhia.core.domain.Rota;
+import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Repository;
@@ -17,7 +18,7 @@ public class RotaPersistence implements RotaPersistencePort {
   }
 
   @Override
-  public Rota buscar(Integer id) {
+  public Rota buscar(UUID id) {
     return null;
   }
 

@@ -1,8 +1,10 @@
 package br.com.airline.companhia.core.domain;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@NoArgsConstructor
 @Getter
 @Setter
 public class Aeronave {
@@ -13,21 +15,6 @@ public class Aeronave {
   private Integer quantidadeAssentoPorFila;
   private Integer quantidadeFila;
   private Status status;
-
-  public Aeronave(
-      String nome,
-      String modelo,
-      TipoAeronave tipo,
-      Integer quantidadeAssentoPorFila,
-      Integer quantidadeFila
-  ) {
-    this.nome = nome;
-    this.modelo = modelo;
-    this.tipo = tipo;
-    this.quantidadeAssentoPorFila = quantidadeAssentoPorFila;
-    this.quantidadeFila = quantidadeFila;
-    this.status = Status.ATIVA;
-  }
 
   public void ativarAeronave() {
     this.status = Status.ATIVA;
