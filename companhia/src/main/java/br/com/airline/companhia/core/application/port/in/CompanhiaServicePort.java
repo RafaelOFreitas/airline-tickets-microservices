@@ -10,7 +10,7 @@ public interface CompanhiaServicePort {
 
   Companhia atualizar(Integer id, Companhia companhia);
 
-  void ativarCompanhia(Integer id);
+  void ativar(Integer id);
 
-  void inativarCompanhia(Integer id);
+  void inativar(Integer id);
 }

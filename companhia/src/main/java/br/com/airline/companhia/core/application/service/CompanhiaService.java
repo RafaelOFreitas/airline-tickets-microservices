@@ -30,7 +30,7 @@ public class CompanhiaService implements CompanhiaServicePort {
 
   @Transactional
   @Override
-  public void ativarCompanhia(Integer id) {
+  public void ativar(Integer id) {
     var companhia = this.buscar(id);
 
     companhia.ativarCompanhia();
@@ -38,7 +38,7 @@ public class CompanhiaService implements CompanhiaServicePort {
 
   @Transactional
   @Override
-  public void inativarCompanhia(Integer id) {
+  public void inativar(Integer id) {
     var companhia = this.buscar(id);
 
     companhia.inativarCompanhia();
