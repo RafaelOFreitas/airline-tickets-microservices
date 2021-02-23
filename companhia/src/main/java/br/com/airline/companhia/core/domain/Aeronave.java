@@ -1,6 +1,5 @@
 package br.com.airline.companhia.core.domain;
 
-import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,7 +12,15 @@ public class Aeronave {
   private String nome;
   private String modelo;
   private TipoAeronave tipo;
-  private Integer numeroAssentos;
-  private List<Classe> classe;
-  private Rota rota;
+  private Integer quantidadeAssentoPorFila;
+  private Integer quantidadeFila;
+  private Status status;
+
+  public void ativarAeronave() {
+    this.status = Status.ATIVA;
+  }
+
+  public void inativarAeronave() {
+    this.status = Status.INATIVA;
+  }
 }

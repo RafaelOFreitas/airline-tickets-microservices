@@ -8,7 +8,5 @@ public interface AeronavePersistencePort {
 
   Aeronave buscar(Integer id);
 
-  Aeronave atualizar(Aeronave aeronave);
-
-  void excluir(Aeronave aeronave);
+  Aeronave atualizar(Integer id, Aeronave aeronave);
 }

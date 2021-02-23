@@ -8,7 +8,9 @@ public interface AeronaveServicePort {
 
   Aeronave buscar(Integer id);
 
-  Aeronave atualizar(Aeronave aeronave);
+  Aeronave atualizar(Integer id, Aeronave aeronave);
 
-  void excluir(Aeronave aeronave);
+  void ativarAeronave(Integer id);
+
+  void inativarAeronave(Integer id);
 }

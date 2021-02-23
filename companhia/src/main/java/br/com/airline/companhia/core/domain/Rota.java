@@ -1,5 +1,6 @@
 package br.com.airline.companhia.core.domain;
 
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,6 +10,7 @@ import lombok.Setter;
 @Setter
 public class Rota {
 
+  private List<Integer> aeronaves;
   private String origem;
   private String destino;
 }
