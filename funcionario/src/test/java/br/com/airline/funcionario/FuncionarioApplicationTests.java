@@ -1,10 +1,10 @@
-package com.example.funcionarioservice;
+package br.com.airline.funcionario;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class FuncionarioServiceApplicationTests {
+class FuncionarioApplicationTests {
 
 	@Test
 	void contextLoads() {

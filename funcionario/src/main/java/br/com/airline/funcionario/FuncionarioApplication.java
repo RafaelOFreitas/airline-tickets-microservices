@@ -1,13 +1,13 @@
-package com.example.funcionarioservice;
+package br.com.airline.funcionario;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FuncionarioServiceApplication {
+public class FuncionarioApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FuncionarioServiceApplication.class, args);
+		SpringApplication.run(FuncionarioApplication.class, args);
 	}
 
 }

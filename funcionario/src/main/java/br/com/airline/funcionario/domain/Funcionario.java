@@ -1,4 +1,4 @@
-package com.example.funcionarioservice.domain;
+package br.com.airline.funcionario.domain;
 
 public class Funcionario {
 	
