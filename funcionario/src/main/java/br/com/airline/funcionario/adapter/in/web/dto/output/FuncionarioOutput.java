@@ -1,17 +1,15 @@
-package br.com.airline.funcionario.core.domain;
+package br.com.airline.funcionario.adapter.in.web.dto.output;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@NoArgsConstructor
 @Getter
 @Setter
-public class Funcionario {
-
+public class FuncionarioOutput {
 	private String nome;
 	private String email;
 	private String senha;
 	private String telefone;
 	private String cpf;
+
 }

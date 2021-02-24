@@ -1,5 +1,7 @@
-package br.com.airline.funcionario.application.port.out;
+package br.com.airline.funcionario.core.application.port.out;
 
-public interface FuncionarioPort {
+import br.com.airline.funcionario.core.domain.Funcionario;
 
+public interface FuncionarioPersistencePort {
+	Funcionario adicionar(Funcionario funcionario);
 }
