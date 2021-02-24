@@ -1,6 +1,7 @@
 package br.com.airline.companhia.adapter.out.persistence.entity;
 
 import br.com.airline.companhia.core.domain.Status;
+import java.time.OffsetDateTime;
 import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +14,8 @@ import javax.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Data
 @NoArgsConstructor
@@ -36,4 +39,12 @@ public class CompanhiaEntity {
   @Enumerated(EnumType.STRING)
   @Column(name = "status_companhia", nullable = false)
   private Status status;
+
+  @CreationTimestamp
+  @Column(name = "data_registro_companhia", nullable = false, columnDefinition = "timestampTz")
+  private OffsetDateTime dataRegistro;
+
+  @UpdateTimestamp
+  @Column(name = "data_ultima_atualizacao_companhia", nullable = false, columnDefinition = "timestampTz")
+  private OffsetDateTime dataAtualizacao;
 }

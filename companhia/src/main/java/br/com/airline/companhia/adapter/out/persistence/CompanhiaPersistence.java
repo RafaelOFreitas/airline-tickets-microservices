@@ -26,7 +26,7 @@ public class CompanhiaPersistence implements CompanhiaPersistencePort {
 
     var entity = this.mapper.toEntity(companhia);
 
-    entity = this.companhiaRepository.save(entity);
+    entity = this.companhiaRepository.saveAndFlush(entity);
 
     return this.mapper.toDomain(entity);
   }

@@ -17,7 +17,7 @@ public class CompanhiaService implements CompanhiaServicePort {
 
   @Override
   public Companhia adicionar(Companhia companhia) {
-    companhia.ativarCompanhia();
+    companhia.ativar();
 
     return this.companhiaPersistence.adicionar(companhia);
   }
@@ -36,7 +36,7 @@ public class CompanhiaService implements CompanhiaServicePort {
   public void ativar(UUID id) {
     var companhia = this.companhiaPersistence.buscar(id);
 
-    companhia.ativarCompanhia();
+    companhia.ativar();
 
     this.companhiaPersistence.atualizar(companhia);
   }
@@ -45,7 +45,7 @@ public class CompanhiaService implements CompanhiaServicePort {
   public void inativar(UUID id) {
     var companhia = this.companhiaPersistence.buscar(id);
 
-    companhia.inativarCompanhia();
+    companhia.inativar();
 
     this.companhiaPersistence.atualizar(companhia);
   }

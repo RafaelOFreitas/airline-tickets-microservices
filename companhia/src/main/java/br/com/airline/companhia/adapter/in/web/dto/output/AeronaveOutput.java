@@ -11,14 +11,20 @@ import lombok.Setter;
 @Setter
 @Getter
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
-public class CompanhiaOutput {
+public class AeronaveOutput {
 
-  @JsonProperty("id_companhia")
+  @JsonProperty("id_aeronave")
   private UUID id;
 
   private String nome;
 
-  private String cnpj;
+  private String modelo;
+
+  private String tipo;
+
+  private Integer quantidadeAssentoFila;
+
+  private Integer quantidadeFila;
 
   private String status;
 

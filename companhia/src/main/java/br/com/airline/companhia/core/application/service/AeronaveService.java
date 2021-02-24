@@ -4,7 +4,6 @@ import br.com.airline.companhia.core.application.port.in.AeronaveServicePort;
 import br.com.airline.companhia.core.application.port.out.AeronavePersistencePort;
 import br.com.airline.companhia.core.domain.Aeronave;
 import java.util.UUID;
-import javax.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +15,8 @@ public class AeronaveService implements AeronaveServicePort {
 
   @Override
   public Aeronave adicionar(Aeronave aeronave) {
+    aeronave.ativar();
+
     return this.aeronavePersistence.adicionar(aeronave);
   }
 
@@ -29,19 +30,21 @@ public class AeronaveService implements AeronaveServicePort {
     return this.aeronavePersistence.atualizar(id, aeronave);
   }
 
-  @Transactional
   @Override
-  public void ativarAeronave(UUID id) {
-    var aeronave = this.buscar(id);
+  public void ativar(UUID id) {
+    var aeronave = this.aeronavePersistence.buscar(id);
 
-    aeronave.ativarAeronave();
+    aeronave.ativar();
+
+    this.aeronavePersistence.atualizar(aeronave);
   }
 
-  @Transactional
   @Override
-  public void inativarAeronave(UUID id) {
-    var aeronave = this.buscar(id);
+  public void inativar(UUID id) {
+    var aeronave = this.aeronavePersistence.buscar(id);
 
-    aeronave.inativarAeronave();
+    aeronave.inativar();
+
+    this.aeronavePersistence.atualizar(aeronave);
   }
 }

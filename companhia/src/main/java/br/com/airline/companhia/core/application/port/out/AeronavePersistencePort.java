@@ -10,4 +10,6 @@ public interface AeronavePersistencePort {
   Aeronave buscar(UUID id);
 
   Aeronave atualizar(UUID id, Aeronave aeronave);
+
+  void atualizar(Aeronave aeronave);
 }

@@ -11,7 +11,7 @@ public interface AeronaveServicePort {
 
   Aeronave atualizar(UUID id, Aeronave aeronave);
 
-  void ativarAeronave(UUID id);
+  void ativar(UUID id);
 
-  void inativarAeronave(UUID id);
+  void inativar(UUID id);
 }
