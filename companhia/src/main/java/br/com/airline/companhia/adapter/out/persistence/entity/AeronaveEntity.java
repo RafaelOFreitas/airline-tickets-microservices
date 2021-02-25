@@ -3,14 +3,14 @@ package br.com.airline.companhia.adapter.out.persistence.entity;
 import br.com.airline.companhia.core.domain.Status;
 import br.com.airline.companhia.core.domain.TipoAeronave;
 import java.time.OffsetDateTime;
-import java.util.UUID;
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -25,14 +25,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 @Table(name = "tb_aeronave")
 public class AeronaveEntity {
 
-  @EqualsAndHashCode.Include
-  @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  @Column(name = "id_aeronave")
-  private UUID id;
-
-  @Column(name = "nome_aeronave", nullable = false)
-  private String nome;
+  @EmbeddedId
+  private AeronaveEntityId id;
 
   @Column(name = "modelo_aeronave", nullable = false)
   private String modelo;
@@ -58,4 +52,12 @@ public class AeronaveEntity {
   @UpdateTimestamp
   @Column(name = "data_ultima_atualizacao_aeronave", nullable = false, columnDefinition = "timestampTz")
   private OffsetDateTime dataAtualizacao;
+
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "fk_companhia", referencedColumnName = "id_companhia", insertable = false, updatable = false)
+  private CompanhiaEntity companhia;
+
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "fk_rota", referencedColumnName = "id_rota", insertable = false, updatable = false)
+  private RotaEntity rota;
 }

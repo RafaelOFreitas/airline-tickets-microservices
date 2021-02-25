@@ -1,13 +1,14 @@
 package br.com.airline.companhia.core.application.port.out;
 
 import br.com.airline.companhia.core.domain.Rota;
+import java.util.List;
 import java.util.UUID;
 
 public interface RotaPersistencePort {
 
-  Rota adicionar(Rota rota);
+  Rota adicionar(UUID idCompanhia, Rota rota);
 
-  Rota buscar(UUID id);
+  List<Rota> buscar(UUID idCompanhia);
 
-  Rota atualizar(Rota rota);
+  Rota atualizar(UUID idCompanhia, Rota rota);
 }

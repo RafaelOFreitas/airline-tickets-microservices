@@ -1,11 +1,16 @@
 package br.com.airline.companhia.adapter.out.persistence.entity;
 
-import java.util.UUID;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -20,7 +25,29 @@ public class RotaEntity {
 
   @EqualsAndHashCode.Include
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id_rota")
-  private UUID id;
+  private Integer id;
+
+  @Column(name = "origem_rota", nullable = false)
+  private String origem;
+
+  @Column(name = "destino_rota", nullable = false)
+  private String destino;
+
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "fk_companhia", nullable = false)
+  private CompanhiaEntity companhia;
+
+  @OneToMany(mappedBy = "rota", fetch = FetchType.LAZY, orphanRemoval = true)
+  private List<AeronaveEntity> aeronaves = new ArrayList<>();
+
+  public void addAeronave(AeronaveEntity aeronave) {
+    this.aeronaves.add(aeronave);
+    aeronave.setRota(this);
+  }
+
+  public void addAeronaves(List<AeronaveEntity> aeronaves) {
+    aeronaves.forEach(this::addAeronave);
+  }
 }

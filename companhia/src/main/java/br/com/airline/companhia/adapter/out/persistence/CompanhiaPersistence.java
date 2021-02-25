@@ -1,5 +1,6 @@
 package br.com.airline.companhia.adapter.out.persistence;
 
+import br.com.airline.companhia.adapter.out.persistence.entity.CompanhiaEntity;
 import br.com.airline.companhia.adapter.out.persistence.mapper.CompanhiaEntityMapper;
 import br.com.airline.companhia.adapter.out.persistence.repository.CompanhiaRepository;
 import br.com.airline.companhia.core.application.port.out.CompanhiaPersistencePort;
@@ -24,22 +25,20 @@ public class CompanhiaPersistence implements CompanhiaPersistencePort {
   public Companhia adicionar(Companhia companhia) {
     log.info("Iniciando transação para salvar companhia: " + companhia.getNome());
 
-    var entity = this.mapper.toEntity(companhia);
+    var companhiaEntity = this.mapper.toEntity(companhia);
 
-    entity = this.companhiaRepository.saveAndFlush(entity);
+    companhiaEntity = this.companhiaRepository.saveAndFlush(companhiaEntity);
 
-    return this.mapper.toDomain(entity);
+    return this.mapper.toDomain(companhiaEntity);
   }
 
   @Override
   public Companhia buscar(UUID id) {
     log.info("Iniciando transação para buscar dados da companhia: " + id);
 
-    var entity = this.companhiaRepository
-        .findById(id)
-        .orElseThrow(() -> new CompanhiaNotFoundException(id));
+    var companhiaEntity = this.getCompanhiaEntity(id);
 
-    return this.mapper.toDomain(entity);
+    return this.mapper.toDomain(companhiaEntity);
   }
 
   @Transactional
@@ -47,15 +46,13 @@ public class CompanhiaPersistence implements CompanhiaPersistencePort {
   public Companhia atualizar(UUID id, Companhia companhia) {
     log.info("Iniciando transação para atualizar dados da companhia: " + id);
 
-    var entity = this.companhiaRepository
-        .findById(id)
-        .orElseThrow(() -> new CompanhiaNotFoundException(id));
+    var companhiaEntity = this.getCompanhiaEntity(id);
 
-    this.mapper.copyProperties(companhia, entity);
+    this.mapper.copyProperties(companhia, companhiaEntity);
 
-    entity = this.companhiaRepository.save(entity);
+    companhiaEntity = this.companhiaRepository.save(companhiaEntity);
 
-    return this.mapper.toDomain(entity);
+    return this.mapper.toDomain(companhiaEntity);
   }
 
   @Transactional
@@ -65,5 +62,11 @@ public class CompanhiaPersistence implements CompanhiaPersistencePort {
         companhia.getStatus(), companhia.getId()));
 
     this.companhiaRepository.save(this.mapper.toEntity(companhia));
+  }
+
+  protected CompanhiaEntity getCompanhiaEntity(UUID id) {
+    return this.companhiaRepository
+        .findById(id)
+        .orElseThrow(() -> new CompanhiaNotFoundException(id));
   }
 }

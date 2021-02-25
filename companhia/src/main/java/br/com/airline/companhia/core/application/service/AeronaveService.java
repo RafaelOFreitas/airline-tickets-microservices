@@ -14,37 +14,37 @@ public class AeronaveService implements AeronaveServicePort {
   private final AeronavePersistencePort aeronavePersistence;
 
   @Override
-  public Aeronave adicionar(Aeronave aeronave) {
+  public Aeronave adicionar(UUID idCompanhia, Integer idRota, Aeronave aeronave) {
     aeronave.ativar();
 
-    return this.aeronavePersistence.adicionar(aeronave);
+    return this.aeronavePersistence.adicionar(idCompanhia, idRota, aeronave);
   }
 
   @Override
-  public Aeronave buscar(UUID id) {
-    return this.aeronavePersistence.buscar(id);
+  public Aeronave buscar(UUID idCompanhia, Integer idRota, String matricula) {
+    return this.aeronavePersistence.buscar(idCompanhia, idRota, matricula);
   }
 
   @Override
-  public Aeronave atualizar(UUID id, Aeronave aeronave) {
-    return this.aeronavePersistence.atualizar(id, aeronave);
+  public Aeronave atualizar(UUID idCompanhia, Integer idRota, Aeronave aeronave) {
+    return this.aeronavePersistence.atualizar(idCompanhia, idRota, aeronave);
   }
 
   @Override
-  public void ativar(UUID id) {
-    var aeronave = this.aeronavePersistence.buscar(id);
+  public void ativar(UUID idCompanhia, Integer idRota, String matricula) {
+    var aeronave = this.aeronavePersistence.buscar(idCompanhia, idRota, matricula);
 
     aeronave.ativar();
 
-    this.aeronavePersistence.atualizar(aeronave);
+    this.aeronavePersistence.salvar(idCompanhia, idRota, aeronave);
   }
 
   @Override
-  public void inativar(UUID id) {
-    var aeronave = this.aeronavePersistence.buscar(id);
+  public void inativar(UUID idCompanhia, Integer idRota, String matricula) {
+    var aeronave = this.aeronavePersistence.buscar(idCompanhia, idRota, matricula);
 
     aeronave.inativar();
 
-    this.aeronavePersistence.atualizar(aeronave);
+    this.aeronavePersistence.salvar(idCompanhia, idRota, aeronave);
   }
 }

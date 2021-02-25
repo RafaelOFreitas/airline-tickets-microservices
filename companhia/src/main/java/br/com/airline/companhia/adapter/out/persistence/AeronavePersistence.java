@@ -1,5 +1,6 @@
 package br.com.airline.companhia.adapter.out.persistence;
 
+import br.com.airline.companhia.adapter.out.persistence.entity.AeronaveEntityId;
 import br.com.airline.companhia.adapter.out.persistence.mapper.AeronaveEntityMapper;
 import br.com.airline.companhia.adapter.out.persistence.repository.AeronaveRepository;
 import br.com.airline.companhia.core.application.port.out.AeronavePersistencePort;
@@ -21,34 +22,35 @@ public class AeronavePersistence implements AeronavePersistencePort {
 
   @Transactional
   @Override
-  public Aeronave adicionar(Aeronave aeronave) {
-    log.info("Iniciando transação para salvar aeronave: " + aeronave.getNome());
+  public Aeronave adicionar(UUID idCompanhia, Integer idRota, Aeronave aeronave) {
+    log.info(
+        String.format("Iniciando transação para salvar aeronave: %s", aeronave.getMatricula()));
 
-    var entity = this.mapper.toEntity(aeronave);
+    var aeronaveEntity = this.mapper.toEntity(idCompanhia, idRota, aeronave);
 
-    entity = this.aeronaveRepository.saveAndFlush(entity);
+    aeronaveEntity = this.aeronaveRepository.saveAndFlush(aeronaveEntity);
 
-    return this.mapper.toDomain(entity);
+    return this.mapper.toDomain(aeronaveEntity);
   }
 
   @Override
-  public Aeronave buscar(UUID id) {
-    log.info("Iniciando transação para buscar dados da aeronave: " + id);
+  public Aeronave buscar(UUID idCompanhia, Integer idRota, String matricula) {
+    log.info("Iniciando transação para buscar aeronave: " + matricula);
 
-    var entity = this.aeronaveRepository
-        .findById(id)
-        .orElseThrow(() -> new AeronaveNotFoundException(id));
+    var aeronave = this.aeronaveRepository
+        .findById(new AeronaveEntityId(matricula, idCompanhia, idRota))
+        .orElseThrow(() -> new AeronaveNotFoundException(matricula));
 
-    return this.mapper.toDomain(entity);
+    return this.mapper.toDomain(aeronave);
   }
 
   @Override
-  public Aeronave atualizar(UUID id, Aeronave aeronave) {
-    log.info("Iniciando transação para atualizar dados da aeronave: " + id);
+  public Aeronave atualizar(UUID idCompanhia, Integer idRota, Aeronave aeronave) {
+    log.info("Iniciando transação para atualizar dados da aeronave: " + aeronave.getMatricula());
 
     var entity = this.aeronaveRepository
-        .findById(id)
-        .orElseThrow(() -> new AeronaveNotFoundException(id));
+        .findById(new AeronaveEntityId(aeronave.getMatricula(), idCompanhia, idRota))
+        .orElseThrow(() -> new AeronaveNotFoundException(aeronave.getMatricula()));
 
     this.mapper.copyProperties(aeronave, entity);
 
@@ -59,10 +61,10 @@ public class AeronavePersistence implements AeronavePersistencePort {
 
   @Transactional
   @Override
-  public void atualizar(Aeronave aeronave) {
+  public void salvar(UUID idCompanhia, Integer idRota, Aeronave aeronave) {
     log.info(String.format("Iniciando transação para %s a aeronave: %s",
-        aeronave.getStatus(), aeronave.getId()));
+        aeronave.getStatus(), aeronave.getMatricula()));
 
-    this.aeronaveRepository.save(this.mapper.toEntity(aeronave));
+    this.aeronaveRepository.save(this.mapper.toEntity(idCompanhia, idRota, aeronave));
   }
 }

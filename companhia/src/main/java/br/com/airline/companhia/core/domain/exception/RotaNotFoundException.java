@@ -12,7 +12,11 @@ public class RotaNotFoundException extends RuntimeException {
     super(message);
   }
 
-  public RotaNotFoundException(UUID id) {
-    this(String.format("Rota não pode ser encontrada com o código: %s", id));
+  public RotaNotFoundException(Integer id) {
+    this(String.format("Rota não pode ser encontrada com o código: %d", id));
+  }
+
+  public RotaNotFoundException(UUID idCompanhia) {
+    this(String.format("Nenhuma rota encontrada para companhia com código: %s", idCompanhia));
   }
 }

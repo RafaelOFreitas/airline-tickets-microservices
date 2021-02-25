@@ -2,14 +2,18 @@ package br.com.airline.companhia.adapter.out.persistence.entity;
 
 import br.com.airline.companhia.core.domain.Status;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -47,4 +51,16 @@ public class CompanhiaEntity {
   @UpdateTimestamp
   @Column(name = "data_ultima_atualizacao_companhia", nullable = false, columnDefinition = "timestampTz")
   private OffsetDateTime dataAtualizacao;
+
+  @OneToMany(mappedBy = "companhia", fetch = FetchType.LAZY, orphanRemoval = true)
+  private List<RotaEntity> rotas = new ArrayList<>();
+
+  public void addRota(RotaEntity rota) {
+    this.rotas.add(rota);
+    rota.setCompanhia(this);
+  }
+
+  public void addRotas(List<RotaEntity> rotas) {
+    rotas.forEach(this::addRota);
+  }
 }

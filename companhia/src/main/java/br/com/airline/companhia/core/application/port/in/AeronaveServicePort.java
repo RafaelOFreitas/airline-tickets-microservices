@@ -5,13 +5,13 @@ import java.util.UUID;
 
 public interface AeronaveServicePort {
 
-  Aeronave adicionar(Aeronave aeronave);
+  Aeronave adicionar(UUID idCompanhia, Integer idRota, Aeronave aeronave);
 
-  Aeronave buscar(UUID id);
+  Aeronave buscar(UUID idCompanhia, Integer idRota, String matricula);
 
-  Aeronave atualizar(UUID id, Aeronave aeronave);
+  Aeronave atualizar(UUID idCompanhia, Integer idRota, Aeronave aeronave);
 
-  void ativar(UUID id);
+  void ativar(UUID idCompanhia, Integer idRota, String matricula);
 
-  void inativar(UUID id);
+  void inativar(UUID idCompanhia, Integer idRota, String matricula);
 }

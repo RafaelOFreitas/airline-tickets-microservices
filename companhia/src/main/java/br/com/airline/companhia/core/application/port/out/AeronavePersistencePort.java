@@ -5,11 +5,11 @@ import java.util.UUID;
 
 public interface AeronavePersistencePort {
 
-  Aeronave adicionar(Aeronave aeronave);
+  Aeronave adicionar(UUID idCompanhia, Integer idRota, Aeronave aeronave);
 
-  Aeronave buscar(UUID id);
+  Aeronave buscar(UUID idCompanhia, Integer idRota, String matricula);
 
-  Aeronave atualizar(UUID id, Aeronave aeronave);
+  Aeronave atualizar(UUID idCompanhia, Integer idRota, Aeronave aeronave);
 
-  void atualizar(Aeronave aeronave);
+  void salvar(UUID idCompanhia, Integer idRota, Aeronave aeronave);
 }
