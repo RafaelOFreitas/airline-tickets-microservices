@@ -1,7 +1,5 @@
-package br.com.airline.companhia.core.domain;
+package br.com.airline.companhia.adapter.in.web.dto.view.output;
 
-import java.time.OffsetDateTime;
-import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -11,13 +9,13 @@ import lombok.Setter;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
 @Setter
-public class Rota {
+@Getter
+public class RotaViewOutput {
 
-  private Integer id;
   private String origem;
+
   private String destino;
-  private OffsetDateTime dataRegistro;
-  private List<Aeronave> aeronaves;
+
+  private AeronaveViewOutput aeronave;
 }

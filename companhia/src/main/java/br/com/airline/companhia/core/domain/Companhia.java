@@ -17,10 +17,6 @@ public class Companhia {
   private Status status;
   private OffsetDateTime dataRegistro;
 
-  public Companhia(UUID id) {
-    this.id = id;
-  }
-
   public void ativar() {
     this.status = Status.ATIVA;
   }

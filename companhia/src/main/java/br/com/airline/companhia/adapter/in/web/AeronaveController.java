@@ -31,7 +31,7 @@ public class AeronaveController {
   private final AeronaveMapper mapper;
 
   @GetMapping
-  public ResponseEntity<AeronaveOutput> getAeronavesByIdRota(
+  public ResponseEntity<AeronaveOutput> getAeronavesById(
       @PathVariable(name = "id_companhia") UUID idCompanhia,
       @PathVariable(name = "id_rota") Integer idRota,
       @PathParam(value = "matricula") String matricula

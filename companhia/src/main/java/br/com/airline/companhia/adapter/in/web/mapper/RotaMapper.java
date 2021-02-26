@@ -7,6 +7,7 @@ import br.com.airline.companhia.core.domain.Rota;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -34,13 +35,13 @@ public class RotaMapper {
     return this.modelMapper.map(domain, RotaOutput.class);
   }
 
-  public RotaListOutput toOutput(List<Rota> domains) {
+  public RotaListOutput toOutput(UUID idCompanhia, List<Rota> domains) {
     if (Objects.isNull(domains)) {
-      return new RotaListOutput(Collections.emptyList());
+      return new RotaListOutput(null, Collections.emptyList());
     }
 
     var rotas = domains.stream().map(this::toOutput).collect(Collectors.toList());
 
-    return new RotaListOutput(rotas);
+    return new RotaListOutput(idCompanhia, rotas);
   }
 }

@@ -1,5 +1,6 @@
 package br.com.airline.companhia.adapter.out.persistence.entity;
 
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
@@ -15,6 +16,8 @@ import javax.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Data
 @NoArgsConstructor
@@ -35,11 +38,19 @@ public class RotaEntity {
   @Column(name = "destino_rota", nullable = false)
   private String destino;
 
+  @CreationTimestamp
+  @Column(name = "data_registro_rota", nullable = false, columnDefinition = "timestampTz")
+  private OffsetDateTime dataRegistro;
+
+  @UpdateTimestamp
+  @Column(name = "data_ultima_atualizacao_rota", nullable = false, columnDefinition = "timestampTz")
+  private OffsetDateTime dataAtualizacao;
+
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "fk_companhia", nullable = false)
   private CompanhiaEntity companhia;
 
-  @OneToMany(mappedBy = "rota", fetch = FetchType.LAZY, orphanRemoval = true)
+  @OneToMany(mappedBy = "rota", fetch = FetchType.LAZY)
   private List<AeronaveEntity> aeronaves = new ArrayList<>();
 
   public void addAeronave(AeronaveEntity aeronave) {

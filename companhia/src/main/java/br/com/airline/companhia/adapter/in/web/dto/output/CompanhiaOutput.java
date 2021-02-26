@@ -13,7 +13,7 @@ import lombok.Setter;
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class CompanhiaOutput {
 
-  @JsonProperty("id_companhia")
+  @JsonProperty(value = "id_companhia", index = 0)
   private UUID id;
 
   private String nome;

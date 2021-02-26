@@ -37,7 +37,7 @@ public class RotaController {
 
     var rotas = this.rotaService.buscar(id);
 
-    return ResponseEntity.ok().body(this.mapper.toOutput(rotas));
+    return ResponseEntity.ok().body(this.mapper.toOutput(id, rotas));
   }
 
   @PutMapping("/{id_rota}")

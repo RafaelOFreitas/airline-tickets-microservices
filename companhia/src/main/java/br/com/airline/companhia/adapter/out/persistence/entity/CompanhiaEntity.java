@@ -52,7 +52,7 @@ public class CompanhiaEntity {
   @Column(name = "data_ultima_atualizacao_companhia", nullable = false, columnDefinition = "timestampTz")
   private OffsetDateTime dataAtualizacao;
 
-  @OneToMany(mappedBy = "companhia", fetch = FetchType.LAZY, orphanRemoval = true)
+  @OneToMany(mappedBy = "companhia", fetch = FetchType.LAZY)
   private List<RotaEntity> rotas = new ArrayList<>();
 
   public void addRota(RotaEntity rota) {

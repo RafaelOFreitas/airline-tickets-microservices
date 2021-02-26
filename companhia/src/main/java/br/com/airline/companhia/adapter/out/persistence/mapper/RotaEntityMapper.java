@@ -22,6 +22,7 @@ public class RotaEntityMapper {
         .id(entity.getId())
         .origem(entity.getOrigem())
         .destino(entity.getDestino())
+        .dataRegistro(entity.getDataRegistro())
         .aeronaves(this.aeronaveMapper.toDomain(entity.getAeronaves()))
         .build();
   }

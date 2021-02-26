@@ -20,6 +20,8 @@
   <properties>
     <java.version>11</java.version>
     <modelmapper.version>2.3.0</modelmapper.version>
+
+    <start-class>br.com.airline.companhia.CompanhiaApplication</start-class>
   </properties>
 
   <dependencies>
