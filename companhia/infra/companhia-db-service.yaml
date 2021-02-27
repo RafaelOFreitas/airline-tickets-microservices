@@ -8,5 +8,6 @@ spec:
   type: NodePort  #Alterar após conclusão do projeto
   ports:
     - port: 5432
+      nodePort: 30011
   selector:
     app: companhia-db-pod

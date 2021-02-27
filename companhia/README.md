@@ -1,16 +1,20 @@
 # Manual da API
 `companhia`
 
-## Pré-requisitos
+## Pré-requisitos:
 
 + [Maven](https://maven.apache.org/)
 + [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 + [Minikube](https://minikube.sigs.k8s.io/docs/start/)
 + [Virtualbox](https://www.virtualbox.org/wiki/Downloads)
 
-## Instruções
+## Instruções:
 
-### Criação do Cluster e Serviços Kubernetes
++ Para testar a aplicação sem o Kubernetes: 
+  - Adicionar em variáveis de ambiente os dados do banco de dados conforme especificação do arquivo: 
+    `companhia-db-configmap.yaml`
+
+### Criação do Cluster e Serviços Kubernetes:
 
 + Iniciando Cluster Kubernetes
 
@@ -18,7 +22,7 @@
 user@user:~$ minikube start --vm-driver=virtualbox
 ```
 
-### Criação do banco de dados para Companhia
+### Criação do banco de dados para Companhia:
 
 + No terminal dentro da pasta infra, execute:
 + Criar recurso de mapas de configuração Postgres:
@@ -51,10 +55,10 @@ user@user:~$ kubectl create -f companhia-db-service.yaml
 user@user:~$ psql -h localhost -U admin --password -p 5432 companhia
 ```
 
-### Build imagem da aplicação
+### Build imagem da Aplicação:
 
 + Utilizar o Docker daemon do Minikube invés do local:
-  - Isso evitará o push e pull de imagens para testar nossa aplicação.
+  - Isso evitará o push e pull de imagens para testar a aplicação.
   - Agora na definição de pods do kubernetes utilizaremos as imagens locais.
 
 ```shell
@@ -65,7 +69,7 @@ user@user:~$ eval $(minikube docker-env)
 + Fazer o build da aplicação:
 
 ```shell
-user@user:~$ mvn clean install
+user@user:~$ mvn clean install -DskipTests
 ```
 
 + Fazer o build da imagem:
@@ -74,13 +78,13 @@ user@user:~$ mvn clean install
 user@user:~$ docker build -t airline/companhia-image .
 ```
 
-+ Para voltar ao seu Docker daemon local:
++ Para voltar ao seu Docker daemon local (OPCIONAL):
 
 ```shell
 user@user:~$ eval $(minikube docker-env -u)
 ```
 
-### Criação da Companhia
+### Criação da Companhia:
 
 + Criar recurso de mapas de configuração Companhia:
 
@@ -100,25 +104,27 @@ user@user:~$ kubectl create -f companhia-deployment.yaml
 user@user:~$ kubectl create -f companhia-service.yaml
 ```
 
-### Delete Deployments
+### Para testar collection Postman da Aplicação:
 
-```
-kubectl delete configmap companhia-configmap
-kubectl delete service companhia-service
-kubectl delete deployment companhia-deployment
-kubectl delete service companhia-db
-kubectl delete deployment companhia-db
-kubectl delete configmap companhia-db-configmap
-kubectl delete persistentvolumeclaim companhia-db-pv-claim
-kubectl delete persistentvolume companhia-db-pv-volume
-```
-
-### Para testar collection Postman da Aplicação
-
++ Importar `companhia-service.collection.json` (raiz do projeto companhia) no Postman. 
+  
 + É necessário identificar o INTERNAL_IP do cluster (LINUX):
 
 ```shell
 user@user:~$ kubectl get nodes -o wide
 ```
 
-+ Adicionar na URL do recurso o INTERNAL_IP ou localhost (Windows). 
++ Adicionar `host` com o `INTERNAL_IP` ou localhost (Windows). 
+
+### Delete Deployments:
+
+```
+kubectl delete configmap companhia-configmap
+kubectl delete service companhia-service
+kubectl delete deployment companhia-deployment
+kubectl delete service companhia-db-service
+kubectl delete deployment companhia-db-deployment
+kubectl delete configmap companhia-db-configmap
+kubectl delete persistentvolumeclaim companhia-db-pv-claim
+kubectl delete persistentvolume companhia-db-pv-volume
+```

@@ -12,13 +12,13 @@ spec:
       containers:
         - name: companhia-container
           image: airline/companhia-image:latest
-          imagePullPolicy: Never
+          imagePullPolicy: "Never"
           ports:
             - containerPort: 9091
           envFrom:
             - configMapRef:
                 name: companhia-configmap
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: companhia-pod

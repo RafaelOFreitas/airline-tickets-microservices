@@ -39,12 +39,9 @@
 							}
 						},
 						"url": {
-							"raw": "192.168.99.102:30010/companhias/",
+							"raw": "{{host}}:30010/companhias/",
 							"host": [
-								"192",
-								"168",
-								"99",
-								"102"
+								"{{host}}"
 							],
 							"port": "30010",
 							"path": [
@@ -73,12 +70,9 @@
 							}
 						},
 						"url": {
-							"raw": "192.168.99.102:30010/companhias/{{companhia_id}}",
+							"raw": "{{host}}:30010/companhias/{{companhia_id}}",
 							"host": [
-								"192",
-								"168",
-								"99",
-								"102"
+								"{{host}}"
 							],
 							"port": "30010",
 							"path": [
@@ -104,12 +98,9 @@
 							}
 						},
 						"url": {
-							"raw": "192.168.99.102:30010/companhias/{{companhia_id}}",
+							"raw": "{{host}}:30010/companhias/{{companhia_id}}",
 							"host": [
-								"192",
-								"168",
-								"99",
-								"102"
+								"{{host}}"
 							],
 							"port": "30010",
 							"path": [
@@ -126,12 +117,9 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "192.168.99.102:30010/companhias/{{companhia_id}}/ativas",
+							"raw": "{{host}}:30010/companhias/{{companhia_id}}/ativas",
 							"host": [
-								"192",
-								"168",
-								"99",
-								"102"
+								"{{host}}"
 							],
 							"port": "30010",
 							"path": [
@@ -149,12 +137,9 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "192.168.99.102:30010/companhias/{{companhia_id}}/ativas",
+							"raw": "{{host}}:30010/companhias/{{companhia_id}}/ativas",
 							"host": [
-								"192",
-								"168",
-								"99",
-								"102"
+								"{{host}}"
 							],
 							"port": "30010",
 							"path": [
@@ -202,12 +187,9 @@
 							}
 						},
 						"url": {
-							"raw": "192.168.99.102:30010/companhias/{{companhia_id}}/rotas",
+							"raw": "{{host}}:30010/companhias/{{companhia_id}}/rotas",
 							"host": [
-								"192",
-								"168",
-								"99",
-								"102"
+								"{{host}}"
 							],
 							"port": "30010",
 							"path": [
@@ -234,12 +216,9 @@
 							}
 						},
 						"url": {
-							"raw": "192.168.99.102:30010/companhias/{{companhia_id}}/rotas/{{rota_id}}",
+							"raw": "{{host}}:30010/companhias/{{companhia_id}}/rotas/{{rota_id}}",
 							"host": [
-								"192",
-								"168",
-								"99",
-								"102"
+								"{{host}}"
 							],
 							"port": "30010",
 							"path": [
@@ -258,12 +237,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "192.168.99.102:30010/companhias/{{companhia_id}}/rotas",
+							"raw": "{{host}}:30010/companhias/{{companhia_id}}/rotas",
 							"host": [
-								"192",
-								"168",
-								"99",
-								"102"
+								"{{host}}"
 							],
 							"port": "30010",
 							"path": [
@@ -311,12 +287,9 @@
 							}
 						},
 						"url": {
-							"raw": "192.168.99.102:30010/companhias/{{companhia_id}}/rotas/{{rota_id}}/aeronaves",
+							"raw": "{{host}}:30010/companhias/{{companhia_id}}/rotas/{{rota_id}}/aeronaves",
 							"host": [
-								"192",
-								"168",
-								"99",
-								"102"
+								"{{host}}"
 							],
 							"port": "30010",
 							"path": [
@@ -347,12 +320,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "192.168.99.102:30010/companhias/{{companhia_id}}/rotas/{{rota_id}}/aeronaves?matricula={{matricula_aeronave}}",
+							"raw": "{{host}}:30010/companhias/{{companhia_id}}/rotas/{{rota_id}}/aeronaves?matricula={{matricula_aeronave}}",
 							"host": [
-								"192",
-								"168",
-								"99",
-								"102"
+								"{{host}}"
 							],
 							"port": "30010",
 							"path": [
@@ -387,12 +357,9 @@
 							}
 						},
 						"url": {
-							"raw": "192.168.99.102:30010/companhias/{{companhia_id}}/rotas/{{rota_id}}/aeronaves",
+							"raw": "{{host}}:30010/companhias/{{companhia_id}}/rotas/{{rota_id}}/aeronaves",
 							"host": [
-								"192",
-								"168",
-								"99",
-								"102"
+								"{{host}}"
 							],
 							"port": "30010",
 							"path": [
@@ -412,12 +379,9 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "192.168.99.102:30010/companhias/{{companhia_id}}/rotas/{{rota_id}}/aeronaves/ativas?matricula={{matricula_aeronave}}",
+							"raw": "{{host}}:30010/companhias/{{companhia_id}}/rotas/{{rota_id}}/aeronaves/ativas?matricula={{matricula_aeronave}}",
 							"host": [
-								"192",
-								"168",
-								"99",
-								"102"
+								"{{host}}"
 							],
 							"port": "30010",
 							"path": [
@@ -444,12 +408,9 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "192.168.99.102:30010/companhias/{{companhia_id}}/rotas/{{rota_id}}/aeronaves/ativas?matricula={{matricula_aeronave}}",
+							"raw": "{{host}}:30010/companhias/{{companhia_id}}/rotas/{{rota_id}}/aeronaves/ativas?matricula={{matricula_aeronave}}",
 							"host": [
-								"192",
-								"168",
-								"99",
-								"102"
+								"{{host}}"
 							],
 							"port": "30010",
 							"path": [
@@ -481,12 +442,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "192.168.99.102:30010/companhias/view?companhia={{companhia_id}}&rota={{rota_id}}&aeronave={{matricula_aeronave}}",
+							"raw": "{{host}}:30010/companhias/view?companhia={{companhia_id}}&rota={{rota_id}}&aeronave={{matricula_aeronave}}",
 							"host": [
-								"192",
-								"168",
-								"99",
-								"102"
+								"{{host}}"
 							],
 							"port": "30010",
 							"path": [
