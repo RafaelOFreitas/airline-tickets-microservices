@@ -88,10 +88,10 @@ user@user:~$ eval $(minikube docker-env -u)
 user@user:~$ kubectl create -f companhia-configmap.yaml
 ```
 
-+ POD Companhia:
++ Deployment Companhia:
 
 ```shell
-user@user:~$ kubectl create -f companhia-pod.yaml 
+user@user:~$ kubectl create -f companhia-deployment.yaml 
 ```
 
 + Serviço Companhia:
@@ -105,7 +105,7 @@ user@user:~$ kubectl create -f companhia-service.yaml
 ```
 kubectl delete configmap companhia-configmap
 kubectl delete service companhia-service
-kubectl delete pod companhia-pod
+kubectl delete deployment companhia-deployment
 kubectl delete service companhia-db
 kubectl delete deployment companhia-db
 kubectl delete configmap companhia-db-configmap

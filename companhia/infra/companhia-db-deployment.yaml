@@ -1,19 +1,16 @@
 apiVersion: apps/v1 
 kind: Deployment
 metadata:
-  name: companhia-db
+  name: companhia-db-deployment
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: companhia-db
   template:
     metadata:
+      name: companhia-db-pod
       labels:
-        app: companhia-db
+        app: companhia-db-pod
     spec:
       containers:
-        - name: companhia-db
+        - name: companhia-db-container
           image: postgres:latest
           imagePullPolicy: "IfNotPresent"
           ports:
@@ -28,3 +25,7 @@ spec:
         - name: companhiadb
           persistentVolumeClaim:
             claimName: companhia-db-pv-claim
+  replicas: 1
+  selector:
+    matchLabels:
+      app: companhia-db-pod
