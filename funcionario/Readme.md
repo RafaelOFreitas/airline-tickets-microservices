@@ -1,6 +1,6 @@
 # Criando e testando containers Docker
 
-## Criar rede docker para sistema hr
+## Criar rede docker
 ```
 docker network create ms-net
 ```
