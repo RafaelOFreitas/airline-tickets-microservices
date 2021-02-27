@@ -44,6 +44,7 @@ public class AeronavePersistence implements AeronavePersistencePort {
     return this.mapper.toDomain(aeronave);
   }
 
+  @Transactional
   @Override
   public Aeronave atualizar(UUID idCompanhia, Integer idRota, Aeronave aeronave) {
     log.info("Iniciando transação para atualizar dados da aeronave: " + aeronave.getMatricula());
