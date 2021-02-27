@@ -1,60 +1,26 @@
 # Manual da API
 `companhia`
 
-## Instruções:
+## Pré-requisitos
 
-### Criação de Serviços para o Cluster Kubernetes
++ [Maven](https://maven.apache.org/)
++ [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
++ [Minikube](https://minikube.sigs.k8s.io/docs/start/)
++ [Virtualbox](https://www.virtualbox.org/wiki/Downloads)
 
-+ Iniciando Cluster Kubernets
+## Instruções
+
+### Criação do Cluster e Serviços Kubernetes
+
++ Iniciando Cluster Kubernetes
 
 ```shell
 user@user:~$ minikube start --vm-driver=virtualbox
 ```
 
-### Build da imagem da aplicação
-
-+ Utilizar o Docker daemon do Minikube invés do local:
-    - Isso evitará o push e pull de imagens para testar nossa aplicação.
-    - Agora na definição de pods do kubernetes utilizaremos as imagens locais.
-
-```shell
-user@user:~$ eval $(minikube docker-env)
-```
-
-+ Fazer o build da imagem:
-
-```shell
-user@user:~$ docker build -t airline/companhia-image .
-```
-
-+ Para voltar ao seu Docker daemon local:
-
-```shell
-user@user:~$ eval $(minikube docker-env -u)
-```
-
-### Build da imagem da aplicação
-
-+ Criar recurso de mapas de configuração Companhia:
-
-```shell
-user@user:~$ kubectl create -f companhia-configmap.yaml
-```
-
-+ POD Companhia:
-
-```shell
-user@user:~$ kubectl create -f companhia-pod.yaml 
-```
-
-+ Serviço Companhia:
-
-```shell
-user@user:~$ kubectl create -f companhia-service.yaml
-```
-
 ### Criação do banco de dados para Companhia
 
++ No terminal dentro da pasta infra, execute:
 + Criar recurso de mapas de configuração Postgres:
 
 ```shell
@@ -85,7 +51,56 @@ user@user:~$ kubectl create -f companhia-db-service.yaml
 user@user:~$ psql -h localhost -U admin --password -p 5432 companhia
 ```
 
-+ Delete Deployments
+### Build imagem da aplicação
+
++ Utilizar o Docker daemon do Minikube invés do local:
+  - Isso evitará o push e pull de imagens para testar nossa aplicação.
+  - Agora na definição de pods do kubernetes utilizaremos as imagens locais.
+
+```shell
+user@user:~$ eval $(minikube docker-env)
+```
+
++ Na raiz do projeto companhia, execute:
++ Fazer o build da aplicação:
+
+```shell
+user@user:~$ mvn clean install
+```
+
++ Fazer o build da imagem:
+
+```shell
+user@user:~$ docker build -t airline/companhia-image .
+```
+
++ Para voltar ao seu Docker daemon local:
+
+```shell
+user@user:~$ eval $(minikube docker-env -u)
+```
+
+### Criação da Companhia
+
++ Criar recurso de mapas de configuração Companhia:
+
+```shell
+user@user:~$ kubectl create -f companhia-configmap.yaml
+```
+
++ POD Companhia:
+
+```shell
+user@user:~$ kubectl create -f companhia-pod.yaml 
+```
+
++ Serviço Companhia:
+
+```shell
+user@user:~$ kubectl create -f companhia-service.yaml
+```
+
+### Delete Deployments
 
 ```
 kubectl delete configmap companhia-configmap
@@ -97,3 +112,13 @@ kubectl delete configmap companhia-db-configmap
 kubectl delete persistentvolumeclaim companhia-db-pv-claim
 kubectl delete persistentvolume companhia-db-pv-volume
 ```
+
+### Para testar collection Postman da Aplicação
+
++ É necessário identificar o INTERNAL_IP do cluster (LINUX):
+
+```shell
+user@user:~$ kubectl get nodes -o wide
+```
+
++ Adicionar na URL do recurso o INTERNAL_IP ou localhost (Windows). 
