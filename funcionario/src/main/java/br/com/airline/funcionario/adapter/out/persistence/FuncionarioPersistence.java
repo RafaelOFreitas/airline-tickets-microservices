@@ -25,23 +25,16 @@ public class FuncionarioPersistence implements FuncionarioPersistencePort {
 
 	public Funcionario adicionar(Funcionario funcionario) {
 		log.info("Iniciando transação para salvar funcionario {} ", funcionario.getNome());
-
 		FuncionarioEntity entity = this.mapper.toEntity(funcionario);
-
 		entity = this.funcionarioRepository.save(entity);
-
 		return this.mapper.toDomain(entity);
 	}
 
 	public Funcionario atualizar(UUID id, Funcionario funcionario) {
 		log.info("Iniciando transação para atualizar dados do funcionário: " + id);
-
 	    FuncionarioEntity funcionarioEntity = this.getFuncionarioEntity(id);
-
 	    this.mapper.copyProperties(funcionario, funcionarioEntity);
-
 	    funcionarioEntity = this.funcionarioRepository.save(funcionarioEntity);
-
 	    return this.mapper.toDomain(funcionarioEntity);
 	}
 
@@ -51,15 +44,12 @@ public class FuncionarioPersistence implements FuncionarioPersistencePort {
 
 	public Funcionario buscar(UUID id) {
 		log.info("Iniciando transação para buscar dados do funcionário: {} ", id);
-
 		FuncionarioEntity funcionarioEntity = this.getFuncionarioEntity(id);
-
 		return this.mapper.toDomain(funcionarioEntity);
 	}
 
 	public List<Funcionario> buscarTodos() {
 		log.info("Iniciando transação para buscar dados de todos funcionários");
-		funcionarioRepository.findAll().forEach(System.out::println);
 		return funcionarioRepository.findAll().stream().map(f -> this.mapper.toDomain(f)).collect(Collectors.toList());
 	}
 
