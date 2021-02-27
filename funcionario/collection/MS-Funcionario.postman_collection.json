@@ -1,0 +1,111 @@
+{
+	"info": {
+		"_postman_id": "618ee2c9-4c17-4c83-838c-af6f473165ea",
+		"name": "MS-Funcionario",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Listar todos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:9092/funcionarios",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9092",
+					"path": [
+						"funcionarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cadastrar",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nome\":\"marcos da Silva\",\n\t\"email\":\"marcossilva@gmail.com\",\n\t\"senha\":\"123456\",\n\t\"telefone\":\"81995879665\",\n\t\"cpf\":\"14554825878\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9092/funcionarios/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9092",
+					"path": [
+						"funcionarios",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar por Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:9092/funcionarios/8ddd9695-db67-45e8-a443-3d68412ff29d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9092",
+					"path": [
+						"funcionarios",
+						"8ddd9695-db67-45e8-a443-3d68412ff29d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Excluir",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:9092/funcionarios/8ddd9695-db67-45e8-a443-3d68412ff29d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9092",
+					"path": [
+						"funcionarios",
+						"8ddd9695-db67-45e8-a443-3d68412ff29d"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
