@@ -1,0 +1,482 @@
+{
+	"info": {
+		"_postman_id": "d8c20d0a-5645-4ac2-8e19-2181fd94d36b",
+		"name": "companhia-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "recursos-companhia",
+			"item": [
+				{
+					"name": "Adicionar Companhia",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"",
+									"postman.setEnvironmentVariable(\"companhia_id\", jsonData.id_companhia);",
+									"",
+									"console.log(jsonData.id_companhia);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\" : \"GOL\",\n    \"cnpj\" : \"06164253000187\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/companhias/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"companhias",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Companhia",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\" : \"GOL\",\n    \"cnpj\" : \"06164253000187\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/companhias/{{companhia_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"companhias",
+								"{{companhia_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Companhia",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\" : \"GOL Airline\",\n    \"cnpj\" : \"06164253000187\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/companhias/{{companhia_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"companhias",
+								"{{companhia_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ativar Companhia",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/companhias/{{companhia_id}}/ativas",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"companhias",
+								"{{companhia_id}}",
+								"ativas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Desativar Companhia",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/companhias/{{companhia_id}}/ativas",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"companhias",
+								"{{companhia_id}}",
+								"ativas"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "recursos-rota",
+			"item": [
+				{
+					"name": "Adicionar Rota",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"",
+									"postman.setEnvironmentVariable(\"rota_id\", jsonData.id_rota);",
+									"",
+									"console.log(jsonData.id_rota);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"origem\": \"Uberlândia-MG\",\n    \"destino\": \"São Paulo-SP\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/companhias/{{companhia_id}}/rotas",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"companhias",
+								"{{companhia_id}}",
+								"rotas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Rota",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"origem\": \"Uberlândia-MG\",\n    \"destino\": \"SãoPaulo-SP\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/companhias/{{companhia_id}}/rotas/{{rota_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"companhias",
+								"{{companhia_id}}",
+								"rotas",
+								"{{rota_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Rotas Companhia",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/companhias/{{companhia_id}}/rotas",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"companhias",
+								"{{companhia_id}}",
+								"rotas"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "recursos-aeronave",
+			"item": [
+				{
+					"name": "Adicionar Aeronave",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"",
+									"postman.setEnvironmentVariable(\"matricula_aeronave\", jsonData.matricula);",
+									"",
+									"console.log(jsonData.matricula_aeronave);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"matricula\": \"GL-24A\",\n    \"modelo\": \"Boeing 737 Max\",\n    \"tipo\": \"EXECUTIVA\",\n    \"quantidade_assento_fila\": 5,\n    \"quantidade_fila\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/companhias/{{companhia_id}}/rotas/{{rota_id}}/aeronaves",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"companhias",
+								"{{companhia_id}}",
+								"rotas",
+								"{{rota_id}}",
+								"aeronaves"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Aeronave",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/companhias/{{companhia_id}}/rotas/{{rota_id}}/aeronaves?matricula={{matricula_aeronave}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"companhias",
+								"{{companhia_id}}",
+								"rotas",
+								"{{rota_id}}",
+								"aeronaves"
+							],
+							"query": [
+								{
+									"key": "matricula",
+									"value": "{{matricula_aeronave}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Aeronave",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"matricula\": \"GL-24A\",\n    \"modelo\": \"Boeing 737 Max\",\n    \"tipo\": \"COMERCIAL\",\n    \"quantidade_assento_fila\": 5,\n    \"quantidade_fila\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/companhias/{{companhia_id}}/rotas/{{rota_id}}/aeronaves",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"companhias",
+								"{{companhia_id}}",
+								"rotas",
+								"{{rota_id}}",
+								"aeronaves"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ativar Aeronave",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/companhias/{{companhia_id}}/rotas/{{rota_id}}/aeronaves/ativas?matricula={{matricula_aeronave}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"companhias",
+								"{{companhia_id}}",
+								"rotas",
+								"{{rota_id}}",
+								"aeronaves",
+								"ativas"
+							],
+							"query": [
+								{
+									"key": "matricula",
+									"value": "{{matricula_aeronave}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Desativar Aeronave",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/companhias/{{companhia_id}}/rotas/{{rota_id}}/aeronaves/ativas?matricula={{matricula_aeronave}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"companhias",
+								"{{companhia_id}}",
+								"rotas",
+								"{{rota_id}}",
+								"aeronaves",
+								"ativas"
+							],
+							"query": [
+								{
+									"key": "matricula",
+									"value": "{{matricula_aeronave}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "recursos-view",
+			"item": [
+				{
+					"name": "Filtrar dados Agregados",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}:30010/companhias/view?companhia={{companhia_id}}&rota={{rota_id}}&aeronave={{matricula_aeronave}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "30010",
+							"path": [
+								"companhias",
+								"view"
+							],
+							"query": [
+								{
+									"key": "companhia",
+									"value": "{{companhia_id}}"
+								},
+								{
+									"key": "rota",
+									"value": "{{rota_id}}"
+								},
+								{
+									"key": "aeronave",
+									"value": "{{matricula_aeronave}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

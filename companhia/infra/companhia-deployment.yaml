@@ -1,0 +1,24 @@
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: companhia-deployment
+spec:
+  template:
+    metadata:
+      name: companhia-pod
+      labels:
+        app: companhia-pod
+    spec:
+      containers:
+        - name: companhia-container
+          image: airline/companhia-image:latest
+          imagePullPolicy: "Never"
+          ports:
+            - containerPort: 9091
+          envFrom:
+            - configMapRef:
+                name: companhia-configmap
+  replicas: 1
+  selector:
+    matchLabels:
+      app: companhia-pod

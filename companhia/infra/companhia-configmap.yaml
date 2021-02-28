@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: companhia-configmap
+  labels:
+    app: companhia-configmap
+data:
+  HOST_DB: jdbc:postgresql://companhia-db-service:5432/companhia
+  USER_DB: admin
+  PASSWORD_DB: admin123

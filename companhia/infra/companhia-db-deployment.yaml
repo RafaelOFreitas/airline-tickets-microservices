@@ -1,0 +1,31 @@
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: companhia-db-deployment
+spec:
+  template:
+    metadata:
+      name: companhia-db-pod
+      labels:
+        app: companhia-db-pod
+    spec:
+      containers:
+        - name: companhia-db-container
+          image: postgres:latest
+          imagePullPolicy: "IfNotPresent"
+          ports:
+            - containerPort: 5432
+          envFrom:
+            - configMapRef:
+                name: companhia-db-configmap
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: companhiadb
+      volumes:
+        - name: companhiadb
+          persistentVolumeClaim:
+            claimName: companhia-db-pv-claim
+  replicas: 1
+  selector:
+    matchLabels:
+      app: companhia-db-pod
