@@ -5,6 +5,6 @@ metadata:
   labels:
     app: companhia-configmap
 data:
-  HOST_DB: companhia-db-service:5432
+  HOST_DB: jdbc:postgresql://companhia-db-service:5432/companhia
   USER_DB: admin
   PASSWORD_DB: admin123
