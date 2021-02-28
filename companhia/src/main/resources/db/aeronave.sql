@@ -1,13 +1,13 @@
 -- Aeronaves para GOL
 insert into tb_aeronave (data_ultima_atualizacao_aeronave, data_registro_aeronave, modelo_aeronave, quantidade_assento_fila_aeronave, quantidade_fila_aeronave, status_aeronave, tipo_aeronave, fk_companhia, fk_rota, matricula_aeronave)
-values (timezone('utc', now()), timezone('utc', now()), 'BOEING 737-700', 6, 24, 'ATIVA', 'COMERCIAL', '23a7dc61-9342-4775-8a94-3461445c7b29', 1, 'PT-MHCA'),
+values (timezone('utc', now()), timezone('utc', now()), 'BOEING 737-700', 6, 24, 'ATIVA', 'COMERCIAL', '23a7dc61-9342-4775-8a94-3461445c7b29', 1, 'PR-GOLA'),
        (timezone('utc', now()), timezone('utc', now()), 'BOEING 737-700', 6, 24, 'ATIVA', 'COMERCIAL', '23a7dc61-9342-4775-8a94-3461445c7b29', 2, 'PR-GOLB'),
        (timezone('utc', now()), timezone('utc', now()), 'BOEING 737-800', 6, 33, 'ATIVA', 'COMERCIAL', '23a7dc61-9342-4775-8a94-3461445c7b29', 3, 'PR-GOLC'),
        (timezone('utc', now()), timezone('utc', now()), 'BOEING 737-800', 6, 33, 'ATIVA', 'COMERCIAL', '23a7dc61-9342-4775-8a94-3461445c7b29', 4, 'PR-GOLD'),
        (timezone('utc', now()), timezone('utc', now()), 'Boeing 737 MAX', 6, 33, 'ATIVA', 'COMERCIAL', '23a7dc61-9342-4775-8a94-3461445c7b29', 5, 'PR-GOLE'),
        (timezone('utc', now()), timezone('utc', now()), 'Boeing 737 MAX', 6, 33, 'ATIVA', 'COMERCIAL', '23a7dc61-9342-4775-8a94-3461445c7b29', 6, 'PR-GOLF'),
        (timezone('utc', now()), timezone('utc', now()), 'Boeing 737 MAX', 6, 33, 'ATIVA', 'COMERCIAL', '23a7dc61-9342-4775-8a94-3461445c7b29', 1, 'PR-GOLG'),
-       (timezone('utc', now()), timezone('utc', now()), 'Praetor 500', 2, 3, 'ATIVA', 'EXECUTIVA', '23a7dc61-9342-4775-8a94-3461445c7b29', 7, 'PR-MHCH');
+       (timezone('utc', now()), timezone('utc', now()), 'Praetor 500', 2, 3, 'ATIVA', 'EXECUTIVA', '23a7dc61-9342-4775-8a94-3461445c7b29', 7, 'PR-GOLF');
 
 -- Aeronaves para TAM
 insert into tb_aeronave (data_ultima_atualizacao_aeronave, data_registro_aeronave, modelo_aeronave, quantidade_assento_fila_aeronave, quantidade_fila_aeronave, status_aeronave, tipo_aeronave, fk_companhia, fk_rota, matricula_aeronave)
