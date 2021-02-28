@@ -1,0 +1,23 @@
+server:
+  servlet:
+    context-path: /companhias
+spring:
+  datasource:
+    url: ${HOST_DB}
+    username: ${USER_DB}
+    password: ${PASSWORD_DB}
+    initialization-mode: always
+    driver-class-name: org.postgresql.Driver
+    data: classpath:db/companhia.sql, classpath:db/rota.sql, classpath:db/aeronave.sql
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    generate-ddl: true
+    database-platform: org.hibernate.dialect.PostgreSQL94Dialect
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          show-sql: true
+          lob:
+            non_contextual_creation: true
