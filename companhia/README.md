@@ -12,7 +12,7 @@
 
 + Para testar a aplicação sem o Kubernetes: 
   - Adicionar em variáveis de ambiente os dados do banco de dados conforme especificação do arquivo: 
-    `companhia-db-configmap.yaml`
+    `companhia-configmap.yaml`
 
 ### Criação do Cluster e Serviços Kubernetes:
 
