@@ -20,11 +20,32 @@
   <properties>
     <java.version>11</java.version>
     <modelmapper.version>2.3.0</modelmapper.version>
+    <spring-cloud.version>2020.0.1</spring-cloud.version>
 
     <start-class>br.com.airline.companhia.CompanhiaApplication</start-class>
   </properties>
 
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>${spring-cloud.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
   <dependencies>
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-config</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-bootstrap</artifactId>
+    </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
@@ -97,5 +118,4 @@
       </plugin>
     </plugins>
   </build>
-
 </project>
