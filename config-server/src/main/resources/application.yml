@@ -8,5 +8,5 @@ spring:
           default-label: main
           uri: https://github.com/RafaelOFreitas/airline-tickets-microservices.git
           search-paths:
-            - microservice-repo/companhia
-            - microservice-repo/funcionario
+            - config-repo/companhia
+            - config-repo/funcionario

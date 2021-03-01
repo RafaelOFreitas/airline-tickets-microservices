@@ -10,12 +10,12 @@
     <version>2.4.3</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
-  
+
   <groupId>br.com.airline</groupId>
   <artifactId>config-server</artifactId>
   <version>0.0.1</version>
   <name>config-server</name>
-  <description>Projeto para configuração de properties do microsserviços.</description>
+  <description>Servidor de configuração: centraliza a configuração de todas as aplicações.</description>
 
   <properties>
     <java.version>11</java.version>
