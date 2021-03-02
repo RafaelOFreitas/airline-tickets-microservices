@@ -24,7 +24,7 @@ user@user:~$ minikube start --vm-driver=virtualbox
 
 ### Criação do banco de dados para Companhia:
 
-+ No terminal dentro da pasta infra, execute:
++ No terminal dentro da pasta infra.
 + Criar recurso de mapas de configuração Postgres:
 
 ```shell
@@ -65,8 +65,7 @@ user@user:~$ psql -h localhost -U admin --password -p 5432 companhia
 user@user:~$ eval $(minikube docker-env)
 ```
 
-+ Na raiz do projeto companhia, execute:
-+ Fazer o build da aplicação:
++ Na raiz do projeto companhia (build da aplicação), execute:
 
 ```shell
 user@user:~$ mvn clean install -DskipTests
