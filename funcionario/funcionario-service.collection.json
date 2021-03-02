@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "618ee2c9-4c17-4c83-838c-af6f473165ea",
-		"name": "MS-Funcionario",
+		"name": "funcionario-service",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
