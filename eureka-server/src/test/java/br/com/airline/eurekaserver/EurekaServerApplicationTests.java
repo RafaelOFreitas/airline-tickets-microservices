@@ -1,13 +1,13 @@
-package br.com.airline.apigatewayairline;
+package br.com.airline.eurekaserver;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ApiGatewayAirlineApplicationTests {
+class EurekaServerApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+  @Test
+  void contextLoads() {
+  }
 
 }

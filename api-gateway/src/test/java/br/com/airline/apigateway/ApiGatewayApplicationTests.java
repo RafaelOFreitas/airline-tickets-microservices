@@ -1,10 +1,10 @@
-package br.com.airline.funcionario;
+package br.com.airline.apigateway;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class FuncionarioApplicationTests {
+class ApiGatewayApplicationTests {
 
 	@Test
 	void contextLoads() {
