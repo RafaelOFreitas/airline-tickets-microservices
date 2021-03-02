@@ -9,9 +9,9 @@ import lombok.Setter;
 @Setter
 public class Funcionario {
 
-	private String nome;
-	private String email;
-	private String senha;
-	private String telefone;
-	private String cpf;
+  private String nome;
+  private String email;
+  private String senha;
+  private String telefone;
+  private String cpf;
 }

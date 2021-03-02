@@ -15,12 +15,29 @@
   <artifactId>config-server</artifactId>
   <version>0.0.1</version>
   <name>config-server</name>
-  <description>Servidor de configuração: centraliza a configuração de todas as aplicações.</description>
+  <description>
+    Serviço Config Server: ferramenta de gerenciamento que centraliza a configuração de todas as
+    aplicações em um local único.
+  </description>
 
   <properties>
     <java.version>11</java.version>
     <spring-cloud.version>2020.0.1</spring-cloud.version>
+
+    <start-class>br.com.airline.configserver.ConfigServerApplication</start-class>
   </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>${spring-cloud.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
   <dependencies>
     <dependency>
@@ -44,15 +61,4 @@
     </plugins>
   </build>
 
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-dependencies</artifactId>
-        <version>${spring-cloud.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
 </project>
