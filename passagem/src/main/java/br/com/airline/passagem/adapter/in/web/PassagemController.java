@@ -25,7 +25,7 @@ public class PassagemController {
 	private FormaPagamentoMapper formaPagamentoMapper;
 	
 
-	@PostMapping("/")
+	@PostMapping
 	public void comprar(@RequestBody PagamentoInput input) {
 		log.info("Recebendo requisição para compra de passagem");
 		Usuario usuario = usuarioMapper.toDomain(input.getUsuario());
