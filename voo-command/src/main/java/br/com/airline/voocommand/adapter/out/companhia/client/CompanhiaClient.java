@@ -14,8 +14,7 @@ public interface CompanhiaClient {
   @GetMapping(value = "/companhias/views")
   @Headers(value = MediaType.APPLICATION_JSON_VALUE)
   CompanhiaDto getInfo(
-      @RequestParam("companhia") UUID companhia,
-      @RequestParam("rota") Integer rota,
-      @RequestParam("aeronave") String aeronave
-  );
+      @RequestParam UUID companhia,
+      @RequestParam Integer rota,
+      @RequestParam String aeronave);
 }
