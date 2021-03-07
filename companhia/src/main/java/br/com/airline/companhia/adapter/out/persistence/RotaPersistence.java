@@ -5,7 +5,7 @@ import br.com.airline.companhia.adapter.out.persistence.repository.RotaRepositor
 import br.com.airline.companhia.core.application.port.out.RotaPersistencePort;
 import br.com.airline.companhia.core.domain.Rota;
 import br.com.airline.companhia.core.domain.exception.RotaNotFoundException;
-import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 import javax.transaction.Transactional;
 import lombok.AllArgsConstructor;
@@ -38,7 +38,7 @@ public class RotaPersistence implements RotaPersistencePort {
   }
 
   @Override
-  public List<Rota> buscar(UUID idCompanhia) {
+  public Set<Rota> buscar(UUID idCompanhia) {
     log.info("Iniciando transação para buscar rotas da companhia: " + idCompanhia);
 
     var rotas = this.rotaRepository

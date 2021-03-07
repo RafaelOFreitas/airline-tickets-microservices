@@ -2,8 +2,8 @@ package br.com.airline.companhia.adapter.out.persistence.entity;
 
 import br.com.airline.companhia.core.domain.Status;
 import java.time.OffsetDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -53,14 +53,14 @@ public class CompanhiaEntity {
   private OffsetDateTime dataAtualizacao;
 
   @OneToMany(mappedBy = "companhia", fetch = FetchType.LAZY)
-  private List<RotaEntity> rotas = new ArrayList<>();
+  private Set<RotaEntity> rotas = new HashSet<>();
 
   public void addRota(RotaEntity rota) {
     this.rotas.add(rota);
     rota.setCompanhia(this);
   }
 
-  public void addRotas(List<RotaEntity> rotas) {
+  public void addRotas(Set<RotaEntity> rotas) {
     rotas.forEach(this::addRota);
   }
 }

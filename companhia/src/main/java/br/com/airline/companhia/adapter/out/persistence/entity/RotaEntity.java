@@ -1,8 +1,8 @@
 package br.com.airline.companhia.adapter.out.persistence.entity;
 
 import java.time.OffsetDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -51,14 +51,14 @@ public class RotaEntity {
   private CompanhiaEntity companhia;
 
   @OneToMany(mappedBy = "rota", fetch = FetchType.LAZY)
-  private List<AeronaveEntity> aeronaves = new ArrayList<>();
+  private Set<AeronaveEntity> aeronaves = new HashSet<>();
 
   public void addAeronave(AeronaveEntity aeronave) {
     this.aeronaves.add(aeronave);
     aeronave.setRota(this);
   }
 
-  public void addAeronaves(List<AeronaveEntity> aeronaves) {
+  public void addAeronaves(Set<AeronaveEntity> aeronaves) {
     aeronaves.forEach(this::addAeronave);
   }
 }

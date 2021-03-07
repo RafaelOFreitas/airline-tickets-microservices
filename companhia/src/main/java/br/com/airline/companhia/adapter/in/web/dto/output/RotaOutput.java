@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.time.OffsetDateTime;
-import java.util.List;
+import java.util.Set;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,5 +22,5 @@ public class RotaOutput {
 
   private OffsetDateTime dataRegistro;
 
-  private List<AeronaveOutput> aeronaves;
+  private Set<AeronaveOutput> aeronaves;
 }
