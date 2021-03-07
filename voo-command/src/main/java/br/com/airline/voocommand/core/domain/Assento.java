@@ -13,7 +13,7 @@ import lombok.Setter;
 @Setter
 public class Assento {
 
-  private String numero;
+  private String codigo;
   private StatusAssento statusAssento;
 
   public static Builder builder() {
@@ -37,21 +37,21 @@ public class Assento {
     }
 
     public Set<Assento> build() {
-      var setAssentos = new HashSet<Assento>();
+      var assentosSet = new HashSet<Assento>();
 
-      for (int fila = 1; fila < this.filas; fila++) {
-        for (int assento = 0; assento <= this.assentos; assento++) {
-          var numero = this.getNumeroAssento(fila, assento);
+      for (int fila = 1; fila <= this.filas; fila++) {
+        for (int assento = 0; assento < this.assentos; assento++) {
+          var numero = this.getCodigoAssento(fila, assento);
 
-          setAssentos.add(new Assento(numero, StatusAssento.LIVRE));
+          assentosSet.add(new Assento(numero, StatusAssento.LIVRE));
         }
       }
 
-      return setAssentos;
+      return assentosSet;
     }
 
-    private String getNumeroAssento(Integer fila, Integer assento) {
-      return String.valueOf(fila) + ASSENTO_IDENTIFIER.indexOf(assento);
+    private String getCodigoAssento(Integer fila, Integer assento) {
+      return String.valueOf(fila) + ASSENTO_IDENTIFIER.charAt(assento);
     }
   }
 }

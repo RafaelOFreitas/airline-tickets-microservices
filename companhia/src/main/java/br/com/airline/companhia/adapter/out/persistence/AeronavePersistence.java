@@ -23,8 +23,7 @@ public class AeronavePersistence implements AeronavePersistencePort {
   @Transactional
   @Override
   public Aeronave adicionar(UUID idCompanhia, Integer idRota, Aeronave aeronave) {
-    log.info(
-        String.format("Iniciando transação para salvar aeronave: %s", aeronave.getMatricula()));
+    log.info("Iniciando transação para salvar aeronave: " + aeronave.toString());
 
     var aeronaveEntity = this.mapper.toEntity(idCompanhia, idRota, aeronave);
 

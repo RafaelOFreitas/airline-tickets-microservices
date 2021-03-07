@@ -61,7 +61,7 @@ public class RotaController {
       @PathVariable(name = "id_companhia") UUID id,
       @Valid @RequestBody RotaInput input
   ) {
-    log.info("Recebendo requisição para adicionar rota a companhia: " + id);
+    log.info("Recebendo requisição para adicionar rota: " + input.toString());
 
     var rota = this.rotaService.adicionar(id, this.mapper.toDomain(input));
 

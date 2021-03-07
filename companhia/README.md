@@ -1,5 +1,5 @@
 # Manual da API
-`companhia`
+`vooDataCompanhia`
 
 ## Pré-requisitos:
 
@@ -12,7 +12,7 @@
 
 + Para testar a aplicação sem o Kubernetes: 
   - Adicionar em variáveis de ambiente os dados do banco de dados conforme especificação do arquivo: 
-    `companhia-configmap.yaml`
+    `vooDataCompanhia-configmap.yaml`
 
 ### Criação do Cluster e Serviços Kubernetes:
 
@@ -28,31 +28,31 @@ user@user:~$ minikube start --vm-driver=virtualbox
 + Criar recurso de mapas de configuração Postgres:
 
 ```shell
-user@user:~$ kubectl create -f companhia-db-configmap.yaml
+user@user:~$ kubectl create -f vooDataCompanhia-db-configmap.yaml
 ```
 
 + Volume de armazenamento persistente:
 
 ```shell
-user@user:~$ kubectl create -f companhia-db-storage.yaml 
+user@user:~$ kubectl create -f vooDataCompanhia-db-storage.yaml 
 ```
 
 + Implantação PostgreSQL:
 
 ```shell
-user@user:~$ kubectl create -f companhia-db-deployment.yaml
+user@user:~$ kubectl create -f vooDataCompanhia-db-deployment.yaml
 ```
 
 + Serviço PostgreSQL:
 
 ```shell
-user@user:~$ kubectl create -f companhia-db-service.yaml
+user@user:~$ kubectl create -f vooDataCompanhia-db-service.yaml
 ```
 
 + Conecte-se ao PostgreSQL:
 
 ```shell
-user@user:~$ psql -h localhost -U admin --password -p 5432 companhia
+user@user:~$ psql -h localhost -U admin --password -p 5432 vooDataCompanhia
 ```
 
 ### Build imagem da Aplicação:
@@ -65,7 +65,7 @@ user@user:~$ psql -h localhost -U admin --password -p 5432 companhia
 user@user:~$ eval $(minikube docker-env)
 ```
 
-+ Na raiz do projeto companhia (build da aplicação), execute:
++ Na raiz do projeto vooDataCompanhia (build da aplicação), execute:
 
 ```shell
 user@user:~$ mvn clean install -DskipTests
@@ -74,7 +74,7 @@ user@user:~$ mvn clean install -DskipTests
 + Fazer o build da imagem:
 
 ```shell
-user@user:~$ docker build -t airline/companhia-image .
+user@user:~$ docker build -t airline/vooDataCompanhia-image .
 ```
 
 + Para voltar ao seu Docker daemon local (OPCIONAL):
@@ -88,24 +88,24 @@ user@user:~$ eval $(minikube docker-env -u)
 + Criar recurso de mapas de configuração Companhia:
 
 ```shell
-user@user:~$ kubectl create -f companhia-configmap.yaml
+user@user:~$ kubectl create -f vooDataCompanhia-configmap.yaml
 ```
 
 + Deployment Companhia:
 
 ```shell
-user@user:~$ kubectl create -f companhia-deployment.yaml 
+user@user:~$ kubectl create -f vooDataCompanhia-deployment.yaml 
 ```
 
 + Serviço Companhia:
 
 ```shell
-user@user:~$ kubectl create -f companhia-service.yaml
+user@user:~$ kubectl create -f vooDataCompanhia-service.yaml
 ```
 
 ### Para testar collection Postman da Aplicação:
 
-+ Importar `companhia-service.collection.json` (raiz do projeto companhia) no Postman. 
++ Importar `vooDataCompanhia-service.collection.json` (raiz do projeto vooDataCompanhia) no Postman. 
   
 + É necessário identificar o INTERNAL_IP do cluster (LINUX):
 
@@ -118,12 +118,12 @@ user@user:~$ kubectl get nodes -o wide
 ### Delete Deployments:
 
 ```
-kubectl delete configmap companhia-configmap
-kubectl delete service companhia-service
-kubectl delete deployment companhia-deployment
-kubectl delete service companhia-db-service
-kubectl delete deployment companhia-db-deployment
-kubectl delete configmap companhia-db-configmap
-kubectl delete persistentvolumeclaim companhia-db-pv-claim
-kubectl delete persistentvolume companhia-db-pv-volume
+kubectl delete configmap vooDataCompanhia-configmap
+kubectl delete service vooDataCompanhia-service
+kubectl delete deployment vooDataCompanhia-deployment
+kubectl delete service vooDataCompanhia-db-service
+kubectl delete deployment vooDataCompanhia-db-deployment
+kubectl delete configmap vooDataCompanhia-db-configmap
+kubectl delete persistentvolumeclaim vooDataCompanhia-db-pv-claim
+kubectl delete persistentvolume vooDataCompanhia-db-pv-volume
 ```

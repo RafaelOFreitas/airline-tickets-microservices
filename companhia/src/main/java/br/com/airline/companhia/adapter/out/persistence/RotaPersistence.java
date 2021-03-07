@@ -24,7 +24,7 @@ public class RotaPersistence implements RotaPersistencePort {
   @Transactional
   @Override
   public Rota adicionar(UUID idCompanhia, Rota rota) {
-    log.info("Iniciando transação para salvar rota para companhia: " + idCompanhia);
+    log.info("Iniciando transação para salvar rota: " + rota.toString());
 
     var companhiaEntity = this.companhiaPersistence.getCompanhiaEntity(idCompanhia);
 

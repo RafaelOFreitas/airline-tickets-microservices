@@ -53,7 +53,7 @@ public class CompanhiaController {
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
   public CompanhiaOutput saveCompanhia(@Valid @RequestBody CompanhiaInput input) {
-    log.info("Recebendo requisição para adicionar companhia: " + input.getNome());
+    log.info("Recebendo requisição para adicionar companhia: " + input.toString());
 
     var companhia = this.companhiaService.adicionar(this.mapper.toDomain(input));
 

@@ -5,6 +5,7 @@ import java.util.UUID;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 @NoArgsConstructor
 @Getter
@@ -23,5 +24,10 @@ public class Companhia {
 
   public void inativar() {
     this.status = Status.INATIVA;
+  }
+
+  @Override
+  public String toString() {
+    return ReflectionToStringBuilder.toString(this);
   }
 }

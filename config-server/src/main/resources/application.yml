@@ -13,3 +13,4 @@ spring:
           search-paths:
             - config-repo/companhia
             - config-repo/funcionario
+            - config-repo/voo-command

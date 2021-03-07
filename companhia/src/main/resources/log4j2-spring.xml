@@ -7,8 +7,8 @@
     </Console>
 
     <RollingFile name="RollingFile"
-      fileName="./companhia/logs/spring-boot-logger-log4j2.log"
-      filePattern="./companhia/logs/$${date:yyyy-MM}/spring-boot-logger-log4j2-%d{-dd-MMMM-yyyy}-%i.log.gz">
+      fileName="./vooDataCompanhia/logs/spring-boot-logger-log4j2.log"
+      filePattern="./vooDataCompanhia/logs/$${date:yyyy-MM}/spring-boot-logger-log4j2-%d{-dd-MMMM-yyyy}-%i.log.gz">
       <PatternLayout>
         <pattern>%d %p %C{1.} [%t] %m%n</pattern>
       </PatternLayout>
@@ -26,7 +26,7 @@
       <AppenderRef ref="Console"/>
       <AppenderRef ref="RollingFile"/>
     </Root>
-    <Logger name="br.com.airline.companhia" level="trace"/>
+    <Logger name="br.com.airline.vooDataCompanhia" level="trace"/>
   </Loggers>
 
 </Configuration>

@@ -12,9 +12,9 @@
   </parent>
 
   <groupId>br.com.airline</groupId>
-  <artifactId>companhia</artifactId>
+  <artifactId>vooDataCompanhia</artifactId>
   <version>0.0.1</version>
-  <name>companhia</name>
+  <name>vooDataCompanhia</name>
   <description>
     Serviço Companhia: ferramenta de gerenciamento de companhias aérea, rotas e aeronaves.
   </description>
@@ -24,7 +24,7 @@
     <modelmapper.version>2.3.0</modelmapper.version>
     <spring-cloud.version>2020.0.1</spring-cloud.version>
 
-    <start-class>br.com.airline.companhia.CompanhiaApplication</start-class>
+    <start-class>br.com.airline.vooDataCompanhia.CompanhiaApplication</start-class>
   </properties>
 
   <dependencyManagement>

@@ -49,7 +49,8 @@ public class AeronaveController {
       @PathVariable(name = "id_rota") Integer idRota,
       @Valid @RequestBody AeronaveInput input
   ) {
-    log.info(String.format("Recebendo requisição para atualizar aeronave: %s", input.getMatricula()));
+    log.info(
+        String.format("Recebendo requisição para atualizar aeronave: %s", input.getMatricula()));
 
     var aeronave = this.aeronaveService.atualizar(idCompanhia, idRota, this.mapper.toDomain(input));
 
@@ -63,7 +64,7 @@ public class AeronaveController {
       @PathVariable(name = "id_rota") Integer idRota,
       @Valid @RequestBody AeronaveInput input
   ) {
-    log.info("Recebendo requisição para adicionar aeronave: " + input.getMatricula());
+    log.info("Recebendo requisição para adicionar aeronave: " + input.toString());
 
     var aeronave = this.mapper.toDomain(input);
 
