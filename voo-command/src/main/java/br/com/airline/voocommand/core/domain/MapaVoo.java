@@ -16,10 +16,7 @@ public class MapaVoo {
   public static MapaVoo mapaFactory(Classe classe, Integer filas, Integer assentos) {
     EnumMap<Classe, Set<Assento>> mapa = new EnumMap<>(Classe.class);
 
-    mapa.put(classe, Assento.builder()
-        .filas(filas)
-        .assentos(assentos)
-        .build());
+    mapa.put(classe, Assento.builder().filas(filas).assentos(assentos).build());
 
     return new MapaVoo(mapa);
   }

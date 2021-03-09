@@ -2,25 +2,17 @@ package br.com.airline.companhia.adapter.in.web.dto.output;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import java.time.OffsetDateTime;
-import java.util.Set;
 import lombok.Getter;
 import lombok.Setter;
 
-@Setter
 @Getter
+@Setter
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
-public class AeronaveOutput {
+public class SecaoOutput {
 
-  private String matricula;
+  private String classe;
 
-  private String modelo;
+  private Integer quantidadeAssento;
 
-  private Set<SecaoOutput> secoes;
-
-  private String tipo;
-
-  private String status;
-
-  private OffsetDateTime dataRegistro;
+  private Integer quantidadeFila;
 }

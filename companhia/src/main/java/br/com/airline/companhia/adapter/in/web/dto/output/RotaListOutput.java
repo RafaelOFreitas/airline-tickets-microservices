@@ -15,5 +15,6 @@ import lombok.Setter;
 public class RotaListOutput {
 
   private UUID idCompanhia;
+
   private Set<RotaOutput> rotas;
 }

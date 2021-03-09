@@ -1,8 +1,5 @@
 package br.com.airline.companhia.adapter.in.web.dto.input;
 
-import com.fasterxml.jackson.databind.PropertyNamingStrategy;
-import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import java.util.Set;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import lombok.Getter;
@@ -11,8 +8,7 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 @Getter
 @Setter
-@JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
-public class AeronaveInput {
+public class AeronaveUpdateInput {
 
   @NotBlank
   private String matricula;
@@ -22,9 +18,6 @@ public class AeronaveInput {
 
   @NotNull
   private TipoAeronaveInput tipo;
-
-  @NotNull
-  private Set<SecaoInput> secoes;
 
   @Override
   public String toString() {

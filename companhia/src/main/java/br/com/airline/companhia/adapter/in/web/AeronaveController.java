@@ -1,6 +1,7 @@
 package br.com.airline.companhia.adapter.in.web;
 
 import br.com.airline.companhia.adapter.in.web.dto.input.AeronaveInput;
+import br.com.airline.companhia.adapter.in.web.dto.input.AeronaveUpdateInput;
 import br.com.airline.companhia.adapter.in.web.dto.output.AeronaveOutput;
 import br.com.airline.companhia.adapter.in.web.mapper.AeronaveMapper;
 import br.com.airline.companhia.core.application.port.in.AeronaveServicePort;
@@ -47,7 +48,7 @@ public class AeronaveController {
   public ResponseEntity<AeronaveOutput> updateAeronave(
       @PathVariable(name = "id_companhia") UUID idCompanhia,
       @PathVariable(name = "id_rota") Integer idRota,
-      @Valid @RequestBody AeronaveInput input
+      @Valid @RequestBody AeronaveUpdateInput input
   ) {
     log.info(
         String.format("Recebendo requisição para atualizar aeronave: %s", input.getMatricula()));

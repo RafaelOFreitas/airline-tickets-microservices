@@ -41,9 +41,9 @@ public class Assento {
 
       for (int fila = 1; fila <= this.filas; fila++) {
         for (int assento = 0; assento < this.assentos; assento++) {
-          var numero = this.getCodigoAssento(fila, assento);
+          var codigo = this.getCodigoAssento(fila, assento);
 
-          assentosSet.add(new Assento(numero, StatusAssento.LIVRE));
+          assentosSet.add(new Assento(codigo, StatusAssento.LIVRE));
         }
       }
 

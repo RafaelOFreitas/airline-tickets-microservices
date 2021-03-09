@@ -1,6 +1,7 @@
 package br.com.airline.companhia.adapter.in.web.mapper;
 
 import br.com.airline.companhia.adapter.in.web.dto.input.AeronaveInput;
+import br.com.airline.companhia.adapter.in.web.dto.input.AeronaveUpdateInput;
 import br.com.airline.companhia.adapter.in.web.dto.output.AeronaveOutput;
 import br.com.airline.companhia.core.domain.Aeronave;
 import java.util.Collections;
@@ -18,6 +19,10 @@ public class AeronaveMapper {
   private final ModelMapper modelMapper;
 
   public Aeronave toDomain(AeronaveInput input) {
+    return this.modelMapper.map(input, Aeronave.class);
+  }
+
+  public Aeronave toDomain(AeronaveUpdateInput input) {
     return this.modelMapper.map(input, Aeronave.class);
   }
 

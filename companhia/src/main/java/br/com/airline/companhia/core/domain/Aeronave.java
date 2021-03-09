@@ -1,6 +1,7 @@
 package br.com.airline.companhia.core.domain;
 
 import java.time.OffsetDateTime;
+import java.util.Set;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,8 +15,7 @@ public class Aeronave {
   private String matricula;
   private String modelo;
   private TipoAeronave tipo;
-  private Integer quantidadeAssentoFila;
-  private Integer quantidadeFila;
+  private Set<Secao> secoes;
   private Status status;
   private OffsetDateTime dataRegistro;
 

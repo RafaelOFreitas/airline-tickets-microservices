@@ -1,6 +1,6 @@
 package br.com.airline.companhia.adapter.in.web.dto.input;
 
-public enum TipoAeronaveInput {
+public enum ClasseInput {
 
-  EXECUTIVA, COMERCIAL
+  EXECUTIVA, PRIMEIRA, ECONOMICA
 }

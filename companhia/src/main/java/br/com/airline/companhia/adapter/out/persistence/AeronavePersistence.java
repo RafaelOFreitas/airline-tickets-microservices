@@ -6,6 +6,7 @@ import br.com.airline.companhia.adapter.out.persistence.repository.AeronaveRepos
 import br.com.airline.companhia.core.application.port.out.AeronavePersistencePort;
 import br.com.airline.companhia.core.domain.Aeronave;
 import br.com.airline.companhia.core.domain.exception.AeronaveNotFoundException;
+import br.com.airline.companhia.core.domain.exception.NegocioException;
 import java.util.UUID;
 import javax.transaction.Transactional;
 import lombok.AllArgsConstructor;
@@ -25,7 +26,14 @@ public class AeronavePersistence implements AeronavePersistencePort {
   public Aeronave adicionar(UUID idCompanhia, Integer idRota, Aeronave aeronave) {
     log.info("Iniciando transação para salvar aeronave: " + aeronave.toString());
 
-    var aeronaveEntity = this.mapper.toEntity(idCompanhia, idRota, aeronave);
+    this.aeronaveRepository
+        .findById(new AeronaveEntityId(aeronave.getMatricula(), idCompanhia, idRota))
+        .ifPresent(entity -> {
+          log.info("Aeronave já cadastrada: " + aeronave.toString());
+          throw new NegocioException("Aeronave já cadastrada: " + aeronave.getMatricula());
+        });
+
+    var aeronaveEntity = this.mapper.toEntity(aeronave, idCompanhia, idRota);
 
     aeronaveEntity = this.aeronaveRepository.saveAndFlush(aeronaveEntity);
 
@@ -65,6 +73,6 @@ public class AeronavePersistence implements AeronavePersistencePort {
     log.info(String.format("Iniciando transação para %s a aeronave: %s",
         aeronave.getStatus(), aeronave.getMatricula()));
 
-    this.aeronaveRepository.save(this.mapper.toEntity(idCompanhia, idRota, aeronave));
+    this.aeronaveRepository.save(this.mapper.toEntity(aeronave, idCompanhia, idRota));
   }
 }

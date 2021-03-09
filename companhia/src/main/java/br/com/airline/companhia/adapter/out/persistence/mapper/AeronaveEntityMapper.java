@@ -34,7 +34,7 @@ public class AeronaveEntityMapper {
     return entities.stream().map(this::toDomain).collect(Collectors.toSet());
   }
 
-  public AeronaveEntity toEntity(UUID idCompanhia, Integer idRota, Aeronave domain) {
+  public AeronaveEntity toEntity(Aeronave domain, UUID idCompanhia, Integer idRota) {
     var entity = this.modelMapper.map(domain, AeronaveEntity.class);
 
     entity.setId(new AeronaveEntityId(domain.getMatricula(), idCompanhia, idRota));

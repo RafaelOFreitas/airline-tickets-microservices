@@ -24,10 +24,7 @@ public class VooInput {
 
   @Override
   public String toString() {
-    return "VooInput{" +
-        "idCompanhia=" + idCompanhia +
-        ", idRota=" + idRota +
-        ", matriculaAeronave='" + matriculaAeronave + '\'' +
-        '}';
+    return "VooInput{" + "" + "idCompanhia=" + idCompanhia + ", idRota=" +
+        idRota + ", matriculaAeronave='" + matriculaAeronave + '\'' + '}';
   }
 }
