@@ -53,11 +53,10 @@ public class AeronaveEntity {
 
   @ElementCollection(fetch = FetchType.LAZY)
   @CollectionTable(name = "tb_secao", joinColumns = {
-      @JoinColumn(name = "matricula_aeronave"),
       @JoinColumn(name = "fk_companhia"),
-      @JoinColumn(name = "fk_rota")
+      @JoinColumn(name = "fk_rota"),
+      @JoinColumn(name = "matricula_aeronave")
   })
-  @Column(name = "secao_aeronave")
   private Set<SecaoEntity> secoes = new HashSet<>();
 
   @ManyToOne(fetch = FetchType.LAZY)

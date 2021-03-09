@@ -1,5 +1,6 @@
 package br.com.airline.companhia.core.domain;
 
+import br.com.airline.companhia.core.domain.exception.NegocioException;
 import java.time.OffsetDateTime;
 import java.util.Set;
 import lombok.Getter;
@@ -20,11 +21,25 @@ public class Aeronave {
   private OffsetDateTime dataRegistro;
 
   public void ativar() {
+    this.validaSecao();
     this.status = Status.ATIVA;
   }
 
   public void inativar() {
     this.status = Status.INATIVA;
+  }
+
+  public void validaSecao() {
+    if (this.tipo != TipoAeronave.EXECUTIVA) {
+      return;
+    }
+
+    var invalida = this.secoes.stream()
+        .anyMatch(s -> s.getClasse() == Classe.ECONOMICA || s.getClasse() == Classe.PRIMEIRA);
+
+    if (invalida) {
+      throw new NegocioException("Tipo de Aeronave não possui classe economica ou primeira classe");
+    }
   }
 
   @Override

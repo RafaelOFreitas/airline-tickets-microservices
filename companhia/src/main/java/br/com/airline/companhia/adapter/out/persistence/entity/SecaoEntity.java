@@ -20,7 +20,7 @@ public class SecaoEntity implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @Enumerated(EnumType.STRING)
-  @Column(name = "classe", nullable = false)
+  @Column(name = "classe_secao", nullable = false)
   private Classe classe;
 
   @Column(name = "quantidade_assento_secao", nullable = false)
