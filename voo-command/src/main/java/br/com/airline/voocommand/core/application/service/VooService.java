@@ -19,7 +19,9 @@ public class VooService implements VooServicePort {
   public Voo adicionar(Voo voo) {
     voo = this.companhiaService.getInfo(voo);
 
-    return voo;//this.vooPersistencePort.adicionar(voo);
+    return voo;
+
+    //this.vooPersistencePort.adicionar(voo);
   }
 
   @Override

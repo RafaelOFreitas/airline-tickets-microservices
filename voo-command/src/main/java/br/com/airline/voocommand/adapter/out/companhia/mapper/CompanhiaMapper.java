@@ -1,7 +1,7 @@
 package br.com.airline.voocommand.adapter.out.companhia.mapper;
 
 import br.com.airline.voocommand.adapter.out.companhia.dto.CompanhiaDto;
-import br.com.airline.voocommand.adapter.out.companhia.dto.TipoAeronaveDto;
+import br.com.airline.voocommand.adapter.out.companhia.dto.SecaoDto;
 import br.com.airline.voocommand.core.domain.Classe;
 import br.com.airline.voocommand.core.domain.MapaVoo;
 import br.com.airline.voocommand.core.domain.StatusVoo;
@@ -18,9 +18,6 @@ public class CompanhiaMapper {
     var rota = dto.getRota();
     var aeronave = rota.getAeronave();
 
-    var quantidadeAssentoFila = rota.getAeronave().getQuantidadeAssentoFila();
-    var quantidadeFila = rota.getAeronave().getQuantidadeFila();
-
     return Voo.builder()
         .idCompanhia(voo.getIdCompanhia())
         .idRota(voo.getIdRota())
@@ -29,22 +26,17 @@ public class CompanhiaMapper {
         .destino(rota.getDestino())
         .horario(OffsetDateTime.now())
         .statusVoo(StatusVoo.AGENDADO)
-        .mapasVoo(this.mapaFactory(aeronave.getTipo(), quantidadeFila, quantidadeAssentoFila))
+        .mapasVoo(this.mapaFactory(aeronave.getSecoes()))
         .dataRegistro(OffsetDateTime.now())
         .dataAtualizacao(OffsetDateTime.now())
         .build();
   }
 
-  private Set<MapaVoo> mapaFactory(TipoAeronaveDto tipo, Integer filas, Integer assentos) {
+  private Set<MapaVoo> mapaFactory(Set<SecaoDto> secoes) {
     var mapas = new HashSet<MapaVoo>();
 
-    if (TipoAeronaveDto.EXECUTIVA == tipo) {
-      mapas.add(MapaVoo.mapaFactory(Classe.EXECUTIVA, filas, assentos));
-      return mapas;
-    }
-
-    tipo.getClasses()
-        .forEach(c -> mapas.add(MapaVoo.mapaFactory(c, c.arranjarFila(filas), assentos)));
+    secoes.forEach(secao -> mapas.add(MapaVoo.mapaFactory(Classe.valueOf(secao.getClasse()),
+        secao.getQuantidadeFila(), secao.getQuantidadeAssento())));
 
     return mapas;
   }

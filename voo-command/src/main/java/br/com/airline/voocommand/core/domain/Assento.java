@@ -14,7 +14,7 @@ import lombok.Setter;
 public class Assento {
 
   private String codigo;
-  private StatusAssento statusAssento;
+  private StatusAssento status;
 
   public static Builder builder() {
     return new Assento.Builder();

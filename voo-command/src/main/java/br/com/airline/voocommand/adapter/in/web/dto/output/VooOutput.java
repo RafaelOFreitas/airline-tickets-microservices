@@ -1,6 +1,5 @@
 package br.com.airline.voocommand.adapter.in.web.dto.output;
 
-import br.com.airline.voocommand.core.domain.MapaVoo;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import java.time.OffsetDateTime;
@@ -21,7 +20,7 @@ public class VooOutput {
   private String destino;
   private OffsetDateTime horario;
   private String statusVoo;
-  private Set<MapaVoo> mapasVoo;
+  private Set<MapaVooOutput> mapasVoo;
   private OffsetDateTime dataRegistro;
   private OffsetDateTime dataAtualizacao;
 }

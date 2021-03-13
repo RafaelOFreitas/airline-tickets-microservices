@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 public class MapaVoo {
 
-  private EnumMap<Classe, Set<Assento>> mapaAssentos;
+  private EnumMap<Classe, Set<Assento>> sessao;
 
   public static MapaVoo mapaFactory(Classe classe, Integer filas, Integer assentos) {
     EnumMap<Classe, Set<Assento>> mapa = new EnumMap<>(Classe.class);
