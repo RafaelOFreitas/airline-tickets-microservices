@@ -4,8 +4,8 @@ import br.com.airline.companhia.adapter.out.persistence.entity.AeronaveEntity;
 import br.com.airline.companhia.adapter.out.persistence.entity.AeronaveEntityId;
 import br.com.airline.companhia.core.domain.Aeronave;
 import java.util.Collections;
-import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
@@ -26,15 +26,15 @@ public class AeronaveEntityMapper {
     return domain;
   }
 
-  public List<Aeronave> toDomain(List<AeronaveEntity> entities) {
+  public Set<Aeronave> toDomain(Set<AeronaveEntity> entities) {
     if (Objects.isNull(entities)) {
-      return Collections.emptyList();
+      return Collections.emptySet();
     }
 
-    return entities.stream().map(this::toDomain).collect(Collectors.toList());
+    return entities.stream().map(this::toDomain).collect(Collectors.toSet());
   }
 
-  public AeronaveEntity toEntity(UUID idCompanhia, Integer idRota, Aeronave domain) {
+  public AeronaveEntity toEntity(Aeronave domain, UUID idCompanhia, Integer idRota) {
     var entity = this.modelMapper.map(domain, AeronaveEntity.class);
 
     entity.setId(new AeronaveEntityId(domain.getMatricula(), idCompanhia, idRota));

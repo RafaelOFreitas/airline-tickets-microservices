@@ -23,7 +23,7 @@ public class CompanhiaPersistence implements CompanhiaPersistencePort {
   @Transactional
   @Override
   public Companhia adicionar(Companhia companhia) {
-    log.info("Iniciando transação para salvar companhia: " + companhia.getNome());
+    log.info("Iniciando transação para salvar companhia: " + companhia.toString());
 
     var companhiaEntity = this.mapper.toEntity(companhia);
 

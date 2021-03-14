@@ -3,7 +3,11 @@ package br.com.airline.companhia.adapter.out.persistence.entity;
 import br.com.airline.companhia.core.domain.Status;
 import br.com.airline.companhia.core.domain.TipoAeronave;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -35,12 +39,6 @@ public class AeronaveEntity {
   @Column(name = "tipo_aeronave", nullable = false)
   private TipoAeronave tipo;
 
-  @Column(name = "quantidade_assento_fila_aeronave", nullable = false)
-  private Integer quantidadeAssentoFila;
-
-  @Column(name = "quantidade_fila_aeronave", nullable = false)
-  private Integer quantidadeFila;
-
   @Enumerated(EnumType.STRING)
   @Column(name = "status_aeronave", nullable = false)
   private Status status;
@@ -52,6 +50,14 @@ public class AeronaveEntity {
   @UpdateTimestamp
   @Column(name = "data_ultima_atualizacao_aeronave", nullable = false, columnDefinition = "timestampTz")
   private OffsetDateTime dataAtualizacao;
+
+  @ElementCollection(fetch = FetchType.LAZY)
+  @CollectionTable(name = "tb_secao", joinColumns = {
+      @JoinColumn(name = "fk_companhia"),
+      @JoinColumn(name = "fk_rota"),
+      @JoinColumn(name = "matricula_aeronave")
+  })
+  private Set<SecaoEntity> secoes = new HashSet<>();
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "fk_companhia", referencedColumnName = "id_companhia", insertable = false, updatable = false)

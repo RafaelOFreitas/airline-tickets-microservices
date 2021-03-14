@@ -36,7 +36,7 @@ public class ViewPersistence implements ViewPersistencePort {
         .origem(rota.getOrigem())
         .destino(rota.getDestino())
         .dataRegistro(rota.getDataRegistro())
-        .aeronaves(Collections.singletonList(this.aeronaveEntityMapper.toDomain(aeronave)))
+        .aeronaves(Collections.singleton(this.aeronaveEntityMapper.toDomain(aeronave)))
         .build();
   }
 }

@@ -2,6 +2,7 @@ package br.com.airline.companhia.adapter.in.web.exception;
 
 import br.com.airline.companhia.core.domain.exception.AeronaveNotFoundException;
 import br.com.airline.companhia.core.domain.exception.CompanhiaNotFoundException;
+import br.com.airline.companhia.core.domain.exception.NegocioException;
 import br.com.airline.companhia.core.domain.exception.RotaNotFoundException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
@@ -55,6 +56,21 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
     return this.getExceptionNotFound(ex, request);
   }
 
+  @ExceptionHandler(NegocioException.class)
+  public ResponseEntity<Object> handleNegocioException(
+      Exception ex,
+      WebRequest request
+  ) {
+    String detail = ex.getMessage();
+
+    Error error = this.createErrorBuilder(HttpStatus.BAD_REQUEST, ErrorType.BUSINESS_ERROR, detail)
+        .userMessage(detail)
+        .build();
+
+    return this
+        .handleExceptionInternal(ex, error, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+  }
+
   @ExceptionHandler(CompanhiaNotFoundException.class)
   public ResponseEntity<Object> handleCredentialNotFoundException(
       CompanhiaNotFoundException ex,
@@ -64,7 +80,8 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
   }
 
   @ExceptionHandler(RotaNotFoundException.class)
-  public ResponseEntity<Object> handleBusinessException(RotaNotFoundException ex, WebRequest request) {
+  public ResponseEntity<Object> handleBusinessException(RotaNotFoundException ex,
+      WebRequest request) {
     return this.getExceptionNotFound(ex, request);
   }
 
@@ -168,11 +185,13 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
   ) {
     String detail = ex.getMessage();
 
-    Error error = this.createErrorBuilder(HttpStatus.NOT_FOUND, ErrorType.RESOURCE_NOT_FOUND, detail)
+    Error error = this
+        .createErrorBuilder(HttpStatus.NOT_FOUND, ErrorType.RESOURCE_NOT_FOUND, detail)
         .userMessage(detail)
         .build();
 
-    return this.handleExceptionInternal(ex, error, new HttpHeaders(), HttpStatus.NOT_FOUND, request);
+    return this
+        .handleExceptionInternal(ex, error, new HttpHeaders(), HttpStatus.NOT_FOUND, request);
   }
 
   private ResponseEntity<Object> handleValidationInternal(
