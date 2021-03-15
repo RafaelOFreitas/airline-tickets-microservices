@@ -1,5 +1,6 @@
 package br.com.airline.companhia.adapter.out.persistence.entity;
 
+import java.io.Serializable;
 import java.time.OffsetDateTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -24,7 +25,9 @@ import org.hibernate.annotations.UpdateTimestamp;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity(name = "rota")
 @Table(name = "tb_rota")
-public class RotaEntity {
+public class RotaEntity implements Serializable {
+
+  private static final long serialVersionUID = 1L;
 
   @EqualsAndHashCode.Include
   @Id

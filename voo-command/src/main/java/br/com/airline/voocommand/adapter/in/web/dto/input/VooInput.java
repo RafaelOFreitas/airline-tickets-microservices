@@ -1,7 +1,6 @@
 package br.com.airline.voocommand.adapter.in.web.dto.input;
 
-import com.fasterxml.jackson.databind.PropertyNamingStrategy;
-import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.UUID;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -10,21 +9,23 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class VooInput {
 
   @NotNull
-  private UUID idCompanhia;
+  @JsonProperty(value = "id_companhia")
+  private UUID companhia;
 
   @NotNull
-  private Integer idRota;
+  @JsonProperty(value = "id_rota")
+  private Integer rota;
 
   @NotBlank
+  @JsonProperty(value = "matricula_aeronave")
   private String matriculaAeronave;
 
   @Override
   public String toString() {
-    return "VooInput{" + "" + "idCompanhia=" + idCompanhia + ", idRota=" +
-        idRota + ", matriculaAeronave='" + matriculaAeronave + '\'' + '}';
+    return "VooInput{" + "" + "id_companhia=" + companhia + ", id_rota=" +
+        rota + ", matricula_aeronave='" + matriculaAeronave + '\'' + '}';
   }
 }

@@ -1,10 +1,9 @@
 package br.com.airline.voocommand.adapter.in.web.dto.output;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import java.time.OffsetDateTime;
-import java.util.Set;
-import java.util.UUID;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,14 +12,23 @@ import lombok.Setter;
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class VooOutput {
 
-  private UUID idCompanhia;
-  private Integer idRota;
-  private String matriculaAeronave;
+  @JsonProperty(value = "matricula_aeronave", index = 1)
+  private String aeronave;
+
+  @JsonProperty(value = "id_voo", index = 2)
+  private String id;
+
   private String origem;
+
   private String destino;
+
   private OffsetDateTime horario;
-  private String statusVoo;
-  private Set<MapaVooOutput> mapasVoo;
+
+  private String status;
+
+  private MapaVooOutput mapa;
+
   private OffsetDateTime dataRegistro;
+
   private OffsetDateTime dataAtualizacao;
 }

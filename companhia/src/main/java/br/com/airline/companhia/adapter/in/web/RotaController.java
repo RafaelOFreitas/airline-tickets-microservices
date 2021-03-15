@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 @Log4j2
 @RestController
-@RequestMapping("/{id_companhia}/rotas")
+@RequestMapping("/companhias/{id_companhia}/rotas")
 public class RotaController {
 
   private final RotaServicePort rotaService;

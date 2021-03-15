@@ -6,7 +6,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class MapaVooOutput {
+public class SessaoVooOutput {
 
-  private Set<SessaoVooOutput> sessoes;
+  private String classe;
+
+  private Set<AssentoOutput> assentos;
 }

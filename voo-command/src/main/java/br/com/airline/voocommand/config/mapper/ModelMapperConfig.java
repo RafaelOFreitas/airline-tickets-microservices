@@ -1,4 +1,4 @@
-package br.com.airline.voocommand.mapper;
+package br.com.airline.voocommand.config.mapper;
 
 import lombok.Generated;
 import org.modelmapper.ModelMapper;

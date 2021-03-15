@@ -4,6 +4,7 @@ import br.com.airline.voocommand.adapter.out.companhia.client.CompanhiaClient;
 import br.com.airline.voocommand.adapter.out.companhia.mapper.CompanhiaMapper;
 import br.com.airline.voocommand.core.application.port.out.CompanhiaServicePort;
 import br.com.airline.voocommand.core.domain.Voo;
+import java.util.UUID;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,13 +16,15 @@ public class CompanhiaService implements CompanhiaServicePort {
   private final CompanhiaMapper mapper;
 
   @Override
-  public Voo getInfo(Voo voo) {
-    var companhia = voo.getIdCompanhia();
-    var rota = voo.getIdRota();
-    var aeronave = voo.getMatriculaAeronave();
+  public Voo buscarInformacoesAdicionais(UUID companhia, Integer rota, String aeronave) {
+    var informacoesVoo = this.client.getInfo(companhia, rota, aeronave);
 
-    var dto = this.client.getInfo(companhia, rota, aeronave);
+    var voo = this.mapper.toDomain(informacoesVoo);
 
-    return this.mapper.toDomain(voo, dto);
+    voo.setCompanhia(companhia);
+    voo.setRota(rota);
+    voo.setAeronave(aeronave);
+
+    return voo;
   }
 }
