@@ -17,15 +17,15 @@ import org.springframework.stereotype.Repository;
 @Log4j2
 public class ViewPersistence implements ViewPersistencePort {
 
-  private final AeronaveRepository aeronaveRepository;
-  private final AeronaveEntityMapper aeronaveEntityMapper;
+  private final AeronaveRepository repository;
+  private final AeronaveEntityMapper mapper;
 
   @Override
   public Rota buscar(UUID idCompanhia, Integer idRota, String matricula) {
     log.info(String.format("Recebendo requisição para buscar dados da companhia: %s "
         + "rota: %d e aeronave: %s", idCompanhia, idRota, matricula));
 
-    var aeronave = this.aeronaveRepository
+    var aeronave = this.repository
         .findById(new AeronaveEntityId(matricula, idCompanhia, idRota))
         .orElseThrow(() -> new AeronaveNotFoundException(matricula));
 
@@ -36,7 +36,7 @@ public class ViewPersistence implements ViewPersistencePort {
         .origem(rota.getOrigem())
         .destino(rota.getDestino())
         .dataRegistro(rota.getDataRegistro())
-        .aeronaves(Collections.singleton(this.aeronaveEntityMapper.toDomain(aeronave)))
+        .aeronaves(Collections.singleton(this.mapper.toDomain(aeronave)))
         .build();
   }
 }

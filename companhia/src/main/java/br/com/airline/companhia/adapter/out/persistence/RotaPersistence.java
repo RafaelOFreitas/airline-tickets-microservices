@@ -17,9 +17,9 @@ import org.springframework.stereotype.Repository;
 @Log4j2
 public class RotaPersistence implements RotaPersistencePort {
 
-  private final RotaRepository rotaRepository;
-  private final CompanhiaPersistence companhiaPersistence;
+  private final RotaRepository repository;
   private final RotaEntityMapper mapper;
+  private final CompanhiaPersistence companhiaPersistence;
 
   @Transactional
   @Override
@@ -32,7 +32,7 @@ public class RotaPersistence implements RotaPersistencePort {
 
     companhiaEntity.addRota(rotaEntity);
 
-    rotaEntity = this.rotaRepository.saveAndFlush(rotaEntity);
+    rotaEntity = this.repository.saveAndFlush(rotaEntity);
 
     return this.mapper.toDomain(rotaEntity);
   }
@@ -41,7 +41,7 @@ public class RotaPersistence implements RotaPersistencePort {
   public Set<Rota> buscar(UUID idCompanhia) {
     log.info("Iniciando transação para buscar rotas da companhia: " + idCompanhia);
 
-    var rotas = this.rotaRepository
+    var rotas = this.repository
         .findAllByCompanhiaId(idCompanhia)
         .orElseThrow(() -> new RotaNotFoundException(idCompanhia));
 
@@ -55,13 +55,13 @@ public class RotaPersistence implements RotaPersistencePort {
 
     log.info("Iniciando transação para atualizar dados da rota: " + idRota);
 
-    var rotaEntity = this.rotaRepository
+    var rotaEntity = this.repository
         .findByIdAndCompanhiaId(idRota, idCompanhia)
         .orElseThrow(() -> new RotaNotFoundException(idRota));
 
     this.mapper.copyProperties(rota, rotaEntity);
 
-    rotaEntity = this.rotaRepository.save(rotaEntity);
+    rotaEntity = this.repository.save(rotaEntity);
 
     return this.mapper.toDomain(rotaEntity);
   }

@@ -1,9 +1,9 @@
 package br.com.airline.companhia.adapter.out.persistence.entity;
 
 import br.com.airline.companhia.core.domain.Status;
-import br.com.airline.companhia.core.domain.TipoAeronave;
+import java.io.Serializable;
 import java.time.OffsetDateTime;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
@@ -27,17 +27,19 @@ import org.hibernate.annotations.UpdateTimestamp;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity(name = "aeronave")
 @Table(name = "tb_aeronave")
-public class AeronaveEntity {
+public class AeronaveEntity implements Serializable {
 
+  private static final long serialVersionUID = 1L;
+
+  @EqualsAndHashCode.Include
   @EmbeddedId
   private AeronaveEntityId id;
 
   @Column(name = "modelo_aeronave", nullable = false)
   private String modelo;
 
-  @Enumerated(EnumType.STRING)
   @Column(name = "tipo_aeronave", nullable = false)
-  private TipoAeronave tipo;
+  private String tipo;
 
   @Enumerated(EnumType.STRING)
   @Column(name = "status_aeronave", nullable = false)
@@ -57,7 +59,7 @@ public class AeronaveEntity {
       @JoinColumn(name = "fk_rota"),
       @JoinColumn(name = "matricula_aeronave")
   })
-  private Set<SecaoEntity> secoes = new HashSet<>();
+  private Set<SecaoEntity> secoes = new LinkedHashSet<>();
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "fk_companhia", referencedColumnName = "id_companhia", insertable = false, updatable = false)

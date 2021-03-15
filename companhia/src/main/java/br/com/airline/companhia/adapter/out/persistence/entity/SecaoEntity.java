@@ -1,11 +1,8 @@
 package br.com.airline.companhia.adapter.out.persistence.entity;
 
-import br.com.airline.companhia.core.domain.Classe;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,9 +16,8 @@ public class SecaoEntity implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
-  @Enumerated(EnumType.STRING)
   @Column(name = "classe_secao", nullable = false)
-  private Classe classe;
+  private String classe;
 
   @Column(name = "quantidade_assento_secao", nullable = false)
   private Integer quantidadeAssento;

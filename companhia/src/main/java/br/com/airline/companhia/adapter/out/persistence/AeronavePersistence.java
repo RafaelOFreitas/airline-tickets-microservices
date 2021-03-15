@@ -18,7 +18,7 @@ import org.springframework.stereotype.Repository;
 @Log4j2
 public class AeronavePersistence implements AeronavePersistencePort {
 
-  private final AeronaveRepository aeronaveRepository;
+  private final AeronaveRepository repository;
   private final AeronaveEntityMapper mapper;
 
   @Transactional
@@ -26,7 +26,7 @@ public class AeronavePersistence implements AeronavePersistencePort {
   public Aeronave adicionar(UUID idCompanhia, Integer idRota, Aeronave aeronave) {
     log.info("Iniciando transação para salvar aeronave: " + aeronave.toString());
 
-    this.aeronaveRepository
+    this.repository
         .findById(new AeronaveEntityId(aeronave.getMatricula(), idCompanhia, idRota))
         .ifPresent(entity -> {
           log.info("Aeronave já cadastrada: " + aeronave.toString());
@@ -35,7 +35,7 @@ public class AeronavePersistence implements AeronavePersistencePort {
 
     var aeronaveEntity = this.mapper.toEntity(aeronave, idCompanhia, idRota);
 
-    aeronaveEntity = this.aeronaveRepository.saveAndFlush(aeronaveEntity);
+    aeronaveEntity = this.repository.saveAndFlush(aeronaveEntity);
 
     return this.mapper.toDomain(aeronaveEntity);
   }
@@ -44,7 +44,7 @@ public class AeronavePersistence implements AeronavePersistencePort {
   public Aeronave buscar(UUID idCompanhia, Integer idRota, String matricula) {
     log.info("Iniciando transação para buscar aeronave: " + matricula);
 
-    var aeronave = this.aeronaveRepository
+    var aeronave = this.repository
         .findById(new AeronaveEntityId(matricula, idCompanhia, idRota))
         .orElseThrow(() -> new AeronaveNotFoundException(matricula));
 
@@ -56,13 +56,13 @@ public class AeronavePersistence implements AeronavePersistencePort {
   public Aeronave atualizar(UUID idCompanhia, Integer idRota, Aeronave aeronave) {
     log.info("Iniciando transação para atualizar dados da aeronave: " + aeronave.getMatricula());
 
-    var entity = this.aeronaveRepository
+    var entity = this.repository
         .findById(new AeronaveEntityId(aeronave.getMatricula(), idCompanhia, idRota))
         .orElseThrow(() -> new AeronaveNotFoundException(aeronave.getMatricula()));
 
     this.mapper.copyProperties(aeronave, entity);
 
-    entity = this.aeronaveRepository.save(entity);
+    entity = this.repository.save(entity);
 
     return this.mapper.toDomain(entity);
   }
@@ -73,6 +73,6 @@ public class AeronavePersistence implements AeronavePersistencePort {
     log.info(String.format("Iniciando transação para %s a aeronave: %s",
         aeronave.getStatus(), aeronave.getMatricula()));
 
-    this.aeronaveRepository.save(this.mapper.toEntity(aeronave, idCompanhia, idRota));
+    this.repository.save(this.mapper.toEntity(aeronave, idCompanhia, idRota));
   }
 }
