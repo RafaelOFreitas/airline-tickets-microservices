@@ -5,6 +5,7 @@ import br.com.airline.voocommand.adapter.out.persistence.entity.SessaoEntity;
 import br.com.airline.voocommand.core.domain.Classe;
 import br.com.airline.voocommand.core.domain.MapaVoo;
 import br.com.airline.voocommand.core.domain.Sessao;
+import br.com.airline.voocommand.core.domain.Voo;
 import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Component;
 public class MapaVooEntityMapper {
 
   private final AssentoEntityMapper assentoMapper;
+  private final VooEntityMapper vooMapper;
 
   public Sessao toDomain(SessaoEntity entity) {
     var assentos = this.assentoMapper.toDomain(entity.getAssentos());
@@ -35,13 +37,13 @@ public class MapaVooEntityMapper {
     return new SessaoEntity(domain.getClasse().toString(), assentos);
   }
 
-  public MapaVooEntity toEntity(String idVoo, MapaVoo domain) {
-    var sessoes = domain.getSessoes().stream()
+  public MapaVooEntity toEntity(Voo voo) {
+    var sessoes = voo.getMapa().getSessoes().stream()
         .map(this::toEntity)
         .collect(Collectors.toList());
 
     return MapaVooEntity.builder()
-        .idVoo(idVoo)
+        .voo(this.vooMapper.toEntity(voo))
         .sessoes(sessoes)
         .build();
   }

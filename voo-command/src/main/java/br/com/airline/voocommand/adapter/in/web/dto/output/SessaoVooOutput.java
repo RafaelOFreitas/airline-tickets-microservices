@@ -9,5 +9,6 @@ import lombok.Setter;
 public class SessaoVooOutput {
 
   private String classe;
+
   private Set<AssentoOutput> assentos;
 }

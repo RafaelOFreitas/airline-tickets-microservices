@@ -8,5 +8,6 @@ import lombok.Setter;
 public class AssentoOutput {
 
   private String codigo;
+
   private String status;
 }

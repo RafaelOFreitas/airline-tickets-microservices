@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -25,8 +26,8 @@ public class MapaVooEntity implements Serializable {
   @Id
   private String id;
 
-  @Field("id_voo")
-  private String idVoo;
+  @DBRef
+  private VooEntity voo;
 
   @Field("sessoes_mapa")
   private transient List<SessaoEntity> sessoes;

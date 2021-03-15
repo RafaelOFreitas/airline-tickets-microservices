@@ -27,7 +27,7 @@ public class VooService implements VooServicePort {
 
     voo = this.vooPersistencePort.adicionar(voo);
 
-    voo.setMapa(this.mapaPersistencePort.adicionar(voo.getId(), voo.getMapa()));
+    voo.setMapa(this.mapaPersistencePort.adicionar(voo));
 
     return voo;
   }
