@@ -17,7 +17,7 @@ import org.springframework.stereotype.Repository;
 @Log4j2
 public class CompanhiaPersistence implements CompanhiaPersistencePort {
 
-  private final CompanhiaRepository companhiaRepository;
+  private final CompanhiaRepository repository;
   private final CompanhiaEntityMapper mapper;
 
   @Transactional
@@ -27,7 +27,7 @@ public class CompanhiaPersistence implements CompanhiaPersistencePort {
 
     var companhiaEntity = this.mapper.toEntity(companhia);
 
-    companhiaEntity = this.companhiaRepository.saveAndFlush(companhiaEntity);
+    companhiaEntity = this.repository.saveAndFlush(companhiaEntity);
 
     return this.mapper.toDomain(companhiaEntity);
   }
@@ -50,7 +50,7 @@ public class CompanhiaPersistence implements CompanhiaPersistencePort {
 
     this.mapper.copyProperties(companhia, companhiaEntity);
 
-    companhiaEntity = this.companhiaRepository.save(companhiaEntity);
+    companhiaEntity = this.repository.save(companhiaEntity);
 
     return this.mapper.toDomain(companhiaEntity);
   }
@@ -61,11 +61,11 @@ public class CompanhiaPersistence implements CompanhiaPersistencePort {
     log.info(String.format("Iniciando transação para %s a companhia: %s",
         companhia.getStatus(), companhia.getId()));
 
-    this.companhiaRepository.save(this.mapper.toEntity(companhia));
+    this.repository.save(this.mapper.toEntity(companhia));
   }
 
   protected CompanhiaEntity getCompanhiaEntity(UUID id) {
-    return this.companhiaRepository
+    return this.repository
         .findById(id)
         .orElseThrow(() -> new CompanhiaNotFoundException(id));
   }
