@@ -1,7 +1,7 @@
-package br.com.airline.voocommand.adapter.out.companhia;
+package br.com.airline.voocommand.adapter.out.integration;
 
-import br.com.airline.voocommand.adapter.out.companhia.client.CompanhiaClient;
-import br.com.airline.voocommand.adapter.out.companhia.mapper.CompanhiaMapper;
+import br.com.airline.voocommand.adapter.out.integration.client.CompanhiaClient;
+import br.com.airline.voocommand.adapter.out.integration.mapper.CompanhiaMapper;
 import br.com.airline.voocommand.core.application.port.out.CompanhiaServicePort;
 import br.com.airline.voocommand.core.domain.Voo;
 import java.util.UUID;

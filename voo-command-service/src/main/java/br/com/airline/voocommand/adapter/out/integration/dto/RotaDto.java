@@ -1,4 +1,4 @@
-package br.com.airline.voocommand.adapter.out.companhia.dto;
+package br.com.airline.voocommand.adapter.out.integration.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

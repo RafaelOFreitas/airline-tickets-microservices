@@ -1,7 +1,7 @@
-package br.com.airline.voocommand.adapter.out.companhia.mapper;
+package br.com.airline.voocommand.adapter.out.integration.mapper;
 
-import br.com.airline.voocommand.adapter.out.companhia.dto.InformacoesVoo;
-import br.com.airline.voocommand.adapter.out.companhia.dto.SecaoDto;
+import br.com.airline.voocommand.adapter.out.integration.dto.InformacoesVoo;
+import br.com.airline.voocommand.adapter.out.integration.dto.SecaoDto;
 import br.com.airline.voocommand.core.domain.Classe;
 import br.com.airline.voocommand.core.domain.MapaVoo;
 import br.com.airline.voocommand.core.domain.Sessao;

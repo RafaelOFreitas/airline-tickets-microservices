@@ -1,4 +1,4 @@
-package br.com.airline.voocommand.adapter.out.companhia.dto;
+package br.com.airline.voocommand.adapter.out.integration.dto;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;

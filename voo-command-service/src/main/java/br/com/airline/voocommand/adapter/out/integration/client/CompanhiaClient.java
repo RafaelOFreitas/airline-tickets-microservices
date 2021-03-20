@@ -1,6 +1,6 @@
-package br.com.airline.voocommand.adapter.out.companhia.client;
+package br.com.airline.voocommand.adapter.out.integration.client;
 
-import br.com.airline.voocommand.adapter.out.companhia.dto.InformacoesVoo;
+import br.com.airline.voocommand.adapter.out.integration.dto.InformacoesVoo;
 import feign.Headers;
 import java.util.UUID;
 import org.springframework.cloud.openfeign.FeignClient;
