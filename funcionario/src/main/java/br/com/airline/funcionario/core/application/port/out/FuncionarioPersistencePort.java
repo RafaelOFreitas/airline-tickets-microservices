@@ -1,19 +1,18 @@
 package br.com.airline.funcionario.core.application.port.out;
 
+import br.com.airline.funcionario.core.domain.Funcionario;
 import java.util.List;
 import java.util.UUID;
 
-import br.com.airline.funcionario.core.domain.Funcionario;
-
 public interface FuncionarioPersistencePort {
-	
-	Funcionario adicionar(Funcionario funcionario);
 
-	Funcionario atualizar(UUID id, Funcionario funcionario);
+  Funcionario adicionar(Funcionario funcionario);
 
-	void excluir(UUID id);
+  Funcionario atualizar(UUID id, Funcionario funcionario);
 
-	Funcionario buscar(UUID id);
+  void excluir(UUID id);
 
-	List<Funcionario> buscarTodos();
+  Funcionario buscar(UUID id);
+
+  List<Funcionario> buscarTodos();
 }

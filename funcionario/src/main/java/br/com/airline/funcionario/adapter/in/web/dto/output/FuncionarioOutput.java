@@ -6,10 +6,14 @@ import lombok.Setter;
 @Getter
 @Setter
 public class FuncionarioOutput {
-	private String nome;
-	private String email;
-	private String senha;
-	private String telefone;
-	private String cpf;
 
+	private String nome;
+
+	private String email;
+
+	private String senha;
+
+	private String telefone;
+
+	private String cpf;
 }
