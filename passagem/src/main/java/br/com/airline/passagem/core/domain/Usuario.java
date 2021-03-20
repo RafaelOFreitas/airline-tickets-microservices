@@ -9,12 +9,11 @@ import lombok.Setter;
 @Setter
 public class Usuario {
 
-	private String cpf;
-	private String nome;
+  private String cpf;
+  private String nome;
 
-	@Override
-	public String toString() {
-		return "Usuario [cpf=" + cpf + ", nome=" + nome + "]";
-	}
-
+  @Override
+  public String toString() {
+    return "Usuario [cpf=" + cpf + ", nome=" + nome + "]";
+  }
 }

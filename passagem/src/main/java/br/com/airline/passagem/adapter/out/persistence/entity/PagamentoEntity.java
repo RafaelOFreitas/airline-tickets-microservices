@@ -1,7 +1,6 @@
 package br.com.airline.passagem.adapter.out.persistence.entity;
 
 import java.math.BigDecimal;
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,9 +9,10 @@ import lombok.Setter;
 @Getter
 @Setter
 public class PagamentoEntity {
-	
-	private UsuarioEntity usuario;
-	private FormaPagamentoEntity formaPagamento;
-	private BigDecimal valor;
 
+  private UsuarioEntity usuario;
+
+  private FormaPagamentoEntity formaPagamento;
+
+  private BigDecimal valor;
 }

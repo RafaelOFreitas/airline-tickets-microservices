@@ -6,7 +6,10 @@ import lombok.Setter;
 @Getter
 @Setter
 public class PagamentoInput {
-	private FormaPagamentoInput formaPagamento;
-	private UsuarioInput usuario;
-	private String valor;
+
+  private FormaPagamentoInput formaPagamento;
+
+  private UsuarioInput usuario;
+
+  private String valor;
 }

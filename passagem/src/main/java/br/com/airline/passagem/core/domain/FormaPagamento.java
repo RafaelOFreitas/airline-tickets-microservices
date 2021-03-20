@@ -9,6 +9,5 @@ import lombok.Setter;
 @Setter
 public class FormaPagamento {
 
-	private String descricao;
-
+  private String descricao;
 }

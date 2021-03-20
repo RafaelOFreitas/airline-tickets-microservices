@@ -6,6 +6,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UsuarioInput {
-	private String cpf;
-	private String nome;
+
+  private String cpf;
+
+  private String nome;
 }
