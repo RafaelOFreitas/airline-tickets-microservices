@@ -1,0 +1,9 @@
+server:
+  port: 9095
+
+eureka:
+  instance:
+    instance-id: 'voo-query'
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
