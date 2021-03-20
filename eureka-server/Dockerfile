@@ -1,5 +1,5 @@
 FROM adoptopenjdk:11-jre-hotspot
-LABEL Airline Tickets
+LABEL "Airline Tickets" = "Eureka Server"
 ARG JAR_FILE=/target/eureka-server-0.0.1.jar
 COPY ${JAR_FILE} eureka-server.jar
 ENTRYPOINT ["java", "-jar", "eureka-server.jar"]
