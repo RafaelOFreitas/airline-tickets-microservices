@@ -2,10 +2,12 @@ package br.com.airline.companhia.adapter.in.web.dto.input;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import java.util.Set;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 @Getter
 @Setter
@@ -22,8 +24,10 @@ public class AeronaveInput {
   private TipoAeronaveInput tipo;
 
   @NotNull
-  private Integer quantidadeAssentoFila;
+  private Set<SecaoInput> secoes;
 
-  @NotNull
-  private Integer quantidadeFila;
+  @Override
+  public String toString() {
+    return ReflectionToStringBuilder.toString(this);
+  }
 }

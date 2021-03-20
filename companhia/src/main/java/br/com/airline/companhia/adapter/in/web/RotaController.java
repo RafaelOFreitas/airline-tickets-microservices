@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 @Log4j2
 @RestController
-@RequestMapping("/{id_companhia}/rotas")
+@RequestMapping("/companhias/{id_companhia}/rotas")
 public class RotaController {
 
   private final RotaServicePort rotaService;
@@ -61,7 +61,7 @@ public class RotaController {
       @PathVariable(name = "id_companhia") UUID id,
       @Valid @RequestBody RotaInput input
   ) {
-    log.info("Recebendo requisição para adicionar rota a companhia: " + id);
+    log.info("Recebendo requisição para adicionar rota: " + input.toString());
 
     var rota = this.rotaService.adicionar(id, this.mapper.toDomain(input));
 

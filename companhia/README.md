@@ -105,7 +105,8 @@ user@user:~$ kubectl create -f companhia-service.yaml
 
 ### Para testar collection Postman da Aplicação:
 
-+ Importar `companhia-service.collection.json` (raiz do projeto companhia) no Postman. 
++ Importar `companhia-service.postman_collection.json` (raiz do projeto companhia) no Postman. 
++ Importar `companhia-env.postman_environment.json` (raiz do projeto companhia) no Postman.
   
 + É necessário identificar o INTERNAL_IP do cluster (LINUX):
 

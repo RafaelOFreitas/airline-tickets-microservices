@@ -1,6 +1,7 @@
 package br.com.airline.companhia.adapter.in.web;
 
 import br.com.airline.companhia.adapter.in.web.dto.input.AeronaveInput;
+import br.com.airline.companhia.adapter.in.web.dto.input.AeronaveUpdateInput;
 import br.com.airline.companhia.adapter.in.web.dto.output.AeronaveOutput;
 import br.com.airline.companhia.adapter.in.web.mapper.AeronaveMapper;
 import br.com.airline.companhia.core.application.port.in.AeronaveServicePort;
@@ -24,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 @Log4j2
 @RestController
-@RequestMapping("/{id_companhia}/rotas/{id_rota}/aeronaves")
+@RequestMapping("/companhias/{id_companhia}/rotas/{id_rota}/aeronaves")
 public class AeronaveController {
 
   private final AeronaveServicePort aeronaveService;
@@ -47,7 +48,7 @@ public class AeronaveController {
   public ResponseEntity<AeronaveOutput> updateAeronave(
       @PathVariable(name = "id_companhia") UUID idCompanhia,
       @PathVariable(name = "id_rota") Integer idRota,
-      @Valid @RequestBody AeronaveInput input
+      @Valid @RequestBody AeronaveUpdateInput input
   ) {
     log.info(String.format("Recebendo requisição para atualizar aeronave: %s", input.getMatricula()));
 
@@ -63,7 +64,7 @@ public class AeronaveController {
       @PathVariable(name = "id_rota") Integer idRota,
       @Valid @RequestBody AeronaveInput input
   ) {
-    log.info("Recebendo requisição para adicionar aeronave: " + input.getMatricula());
+    log.info("Recebendo requisição para adicionar aeronave: " + input.toString());
 
     var aeronave = this.mapper.toDomain(input);
 

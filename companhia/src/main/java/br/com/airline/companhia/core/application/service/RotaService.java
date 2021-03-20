@@ -3,7 +3,7 @@ package br.com.airline.companhia.core.application.service;
 import br.com.airline.companhia.core.application.port.in.RotaServicePort;
 import br.com.airline.companhia.core.application.port.out.RotaPersistencePort;
 import br.com.airline.companhia.core.domain.Rota;
-import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,7 @@ public class RotaService implements RotaServicePort {
   }
 
   @Override
-  public List<Rota> buscar(UUID idCompanhia) {
+  public Set<Rota> buscar(UUID idCompanhia) {
     return this.rotaPersistence.buscar(idCompanhia);
   }
 

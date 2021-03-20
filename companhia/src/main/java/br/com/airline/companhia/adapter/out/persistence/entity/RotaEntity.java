@@ -1,8 +1,9 @@
 package br.com.airline.companhia.adapter.out.persistence.entity;
 
+import java.io.Serializable;
 import java.time.OffsetDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -24,7 +25,9 @@ import org.hibernate.annotations.UpdateTimestamp;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity(name = "rota")
 @Table(name = "tb_rota")
-public class RotaEntity {
+public class RotaEntity implements Serializable {
+
+  private static final long serialVersionUID = 1L;
 
   @EqualsAndHashCode.Include
   @Id
@@ -51,14 +54,14 @@ public class RotaEntity {
   private CompanhiaEntity companhia;
 
   @OneToMany(mappedBy = "rota", fetch = FetchType.LAZY)
-  private List<AeronaveEntity> aeronaves = new ArrayList<>();
+  private Set<AeronaveEntity> aeronaves = new HashSet<>();
 
   public void addAeronave(AeronaveEntity aeronave) {
     this.aeronaves.add(aeronave);
     aeronave.setRota(this);
   }
 
-  public void addAeronaves(List<AeronaveEntity> aeronaves) {
+  public void addAeronaves(Set<AeronaveEntity> aeronaves) {
     aeronaves.forEach(this::addAeronave);
   }
 }

@@ -18,12 +18,12 @@ public class ViewMapper {
   public ViewOutput toOutput(Rota domain) {
     var aeronave = CollectionUtils.firstElement(domain.getAeronaves());
 
-    return ViewOutput.builder()
-        .rota(RotaViewOutput.builder()
-            .origem(domain.getOrigem())
-            .destino(domain.getDestino())
-            .aeronave(this.modelMapper.map(aeronave, AeronaveViewOutput.class))
-            .build())
+    var rota = RotaViewOutput.builder()
+        .origem(domain.getOrigem())
+        .destino(domain.getDestino())
+        .aeronave(this.modelMapper.map(aeronave, AeronaveViewOutput.class))
         .build();
+
+    return new ViewOutput(rota);
   }
 }

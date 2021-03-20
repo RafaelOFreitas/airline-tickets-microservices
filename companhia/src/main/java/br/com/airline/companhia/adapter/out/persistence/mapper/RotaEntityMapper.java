@@ -3,8 +3,8 @@ package br.com.airline.companhia.adapter.out.persistence.mapper;
 import br.com.airline.companhia.adapter.out.persistence.entity.RotaEntity;
 import br.com.airline.companhia.core.domain.Rota;
 import java.util.Collections;
-import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -27,12 +27,12 @@ public class RotaEntityMapper {
         .build();
   }
 
-  public List<Rota> toDomain(List<RotaEntity> entities) {
+  public Set<Rota> toDomain(Set<RotaEntity> entities) {
     if (Objects.isNull(entities)) {
-      return Collections.emptyList();
+      return Collections.emptySet();
     }
 
-    return entities.stream().map(this::toDomain).collect(Collectors.toList());
+    return entities.stream().map(this::toDomain).collect(Collectors.toSet());
   }
 
   public RotaEntity toEntity(Rota domain) {

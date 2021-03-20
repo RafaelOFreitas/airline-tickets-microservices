@@ -1,14 +1,12 @@
 package br.com.airline.companhia.adapter.out.persistence.entity;
 
-import br.com.airline.companhia.core.domain.Status;
+import java.io.Serializable;
 import java.time.OffsetDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,7 +24,9 @@ import org.hibernate.annotations.UpdateTimestamp;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity(name = "companhia")
 @Table(name = "tb_companhia")
-public class CompanhiaEntity {
+public class CompanhiaEntity implements Serializable {
+
+  private static final long serialVersionUID = 1L;
 
   @EqualsAndHashCode.Include
   @Id
@@ -40,9 +40,8 @@ public class CompanhiaEntity {
   @Column(name = "cnpj_companhia", nullable = false)
   private String cnpj;
 
-  @Enumerated(EnumType.STRING)
   @Column(name = "status_companhia", nullable = false)
-  private Status status;
+  private String status;
 
   @CreationTimestamp
   @Column(name = "data_registro_companhia", nullable = false, columnDefinition = "timestampTz")
@@ -53,14 +52,14 @@ public class CompanhiaEntity {
   private OffsetDateTime dataAtualizacao;
 
   @OneToMany(mappedBy = "companhia", fetch = FetchType.LAZY)
-  private List<RotaEntity> rotas = new ArrayList<>();
+  private Set<RotaEntity> rotas = new HashSet<>();
 
   public void addRota(RotaEntity rota) {
     this.rotas.add(rota);
     rota.setCompanhia(this);
   }
 
-  public void addRotas(List<RotaEntity> rotas) {
+  public void addRotas(Set<RotaEntity> rotas) {
     rotas.forEach(this::addRota);
   }
 }

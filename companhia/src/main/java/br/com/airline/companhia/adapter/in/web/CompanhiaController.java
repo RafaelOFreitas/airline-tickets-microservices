@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 @Log4j2
 @RestController
-@RequestMapping("/")
+@RequestMapping("/companhias")
 public class CompanhiaController {
 
   private final CompanhiaServicePort companhiaService;
@@ -53,7 +53,7 @@ public class CompanhiaController {
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
   public CompanhiaOutput saveCompanhia(@Valid @RequestBody CompanhiaInput input) {
-    log.info("Recebendo requisição para adicionar companhia: " + input.getNome());
+    log.info("Recebendo requisição para adicionar companhia: " + input.toString());
 
     var companhia = this.companhiaService.adicionar(this.mapper.toDomain(input));
 

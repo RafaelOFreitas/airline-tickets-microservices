@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "d8c20d0a-5645-4ac2-8e19-2181fd94d36b",
+		"_postman_id": "08de744c-dc3d-43b0-8717-3fff0dc89f8d",
 		"name": "companhia-service",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -22,7 +22,8 @@
 									"console.log(jsonData.id_companhia);",
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"id": "ae55141e-9379-40db-a2ca-7360dd6e6a74"
 							}
 						}
 					],
@@ -146,7 +147,8 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "recursos-rota",
@@ -165,7 +167,8 @@
 									"console.log(jsonData.id_rota);",
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"id": "416e7602-103b-40bf-8c6f-736868c4a625"
 							}
 						}
 					],
@@ -243,7 +246,8 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "recursos-aeronave",
@@ -254,6 +258,7 @@
 						{
 							"listen": "test",
 							"script": {
+								"id": "208fe8e0-728e-402f-9f65-2a293892960c",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"",
@@ -271,7 +276,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"matricula\": \"GL-24A\",\n    \"modelo\": \"Boeing 737 Max\",\n    \"tipo\": \"EXECUTIVA\",\n    \"quantidade_assento_fila\": 5,\n    \"quantidade_fila\": 10\n}",
+							"raw": "{\n    \"matricula\": \"GL-24A\",\n    \"modelo\": \"Boeing 737 Max\",\n    \"tipo\": \"EXECUTIVA\",\n    \"secoes\": [\n        {\n            \"classe\": \"EXECUTIVA\",\n            \"quantidade_assento\": 4,\n            \"quantidade_fila\": 4\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -303,7 +308,8 @@
 								"exec": [
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"id": "65130268-1af7-48b5-b8b2-330258732cab"
 							}
 						}
 					],
@@ -339,7 +345,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"matricula\": \"GL-24A\",\n    \"modelo\": \"Boeing 737 Max\",\n    \"tipo\": \"COMERCIAL\",\n    \"quantidade_assento_fila\": 5,\n    \"quantidade_fila\": 10\n}",
+							"raw": "{\n    \"matricula\": \"GL-24A\",\n    \"modelo\": \"Boeing 737 Max\",\n    \"tipo\": \"COMERCIAL\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -418,7 +424,8 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "recursos-view",
@@ -429,14 +436,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}:30010/companhias/view?companhia={{companhia_id}}&rota={{rota_id}}&aeronave={{matricula_aeronave}}",
+							"raw": "{{host}}/companhias/views?companhia={{companhia_id}}&rota={{rota_id}}&aeronave={{matricula_aeronave}}",
 							"host": [
 								"{{host}}"
 							],
-							"port": "30010",
 							"path": [
 								"companhias",
-								"view"
+								"views"
 							],
 							"query": [
 								{
@@ -456,7 +462,8 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"event": [
@@ -466,7 +473,8 @@
 				"type": "text/javascript",
 				"exec": [
 					""
-				]
+				],
+				"id": "c0b74e36-d345-45ec-8f52-aca2f6a04221"
 			}
 		},
 		{
@@ -475,8 +483,10 @@
 				"type": "text/javascript",
 				"exec": [
 					""
-				]
+				],
+				"id": "a15a30a3-85a6-4d4a-bec0-589ab317ca6a"
 			}
 		}
-	]
+	],
+	"protocolProfileBehavior": {}
 }
