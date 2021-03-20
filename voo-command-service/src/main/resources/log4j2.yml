@@ -1,0 +1,44 @@
+Configutation:
+  name: Console
+  Properties:
+    Property:
+      name: log-path
+      value: "logs"
+  Appenders:
+    Console:
+      name: Console
+      target: SYSTEM_OUT
+      PatternLayout:
+        pattern: "[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n"
+    File:
+      name: File
+      fileName: ${log-path}/logfile.log
+      PatternLayout:
+        pattern: "[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n"
+    RollingFile:
+      - name: RollingFile
+        fileName: "./voo-command-service/logs/voo-command-log4j2.log"
+        filePattern: "./voo-command-service/logs/$${date:yyyy-MM}/voo-command-log4j2-%d{-dd-MMMM-yyyy}-%i.log.gz"
+        PatternLayout:
+          pattern: "%d %p %C{1.} [%t] %m%n"
+        Policies:
+          SizeBasedTriggeringPolicy:
+            size: 1 KB
+        DefaultRollOverStrategy:
+          max: 30
+  Loggers:
+    Root:
+      level: info
+      AppenderRef:
+        - ref: Console
+    Logger:
+      - name: br.com.airline.voocommand
+        additivity: false
+        level: trace
+        AppenderRef:
+          - ref: Console
+            level: info
+          - ref: File
+            level: error
+          - ref: RollingFile
+            level: debug
